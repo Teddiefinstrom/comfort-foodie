@@ -1,0 +1,9 @@
+.btn-login {
+    background-color: $color-green;
+    border: none;
+  
+    &:hover {
+      background-color: $color-green-hover;
+    }
+  }
+  
