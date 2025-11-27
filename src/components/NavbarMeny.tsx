@@ -1,16 +1,23 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router";
-import AuthModalSwitch from "./AuthModalSwitch";
-//import "../styling/scss/components/_navbarMeny.scss";
+import { Link, useNavigate } from "react-router";
+import AuthModalSwitch from "./Auth/AuthModalSwitch";
 import { useState } from "react";
-import Button from "react-bootstrap/esm/Button";
+import Button from "react-bootstrap/Button";
+import useAuth from "../hooks/useAuth";
 
 function NavbarMeny() {
   const [activeModal, setActiveModal] = useState<"login" | "register" | null>(
     null
   );
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/");
+  };
 
   return (
     <>
@@ -37,24 +44,31 @@ function NavbarMeny() {
                 About
               </Nav.Link>
             </Nav>
+            {!currentUser ? (
+              <Nav className="nav-btns">
+                <Button
+                  className="btn-register"
+                  variant="outline-dark"
+                  onClick={() => setActiveModal("register")}
+                >
+                  Signup
+                </Button>
 
-            <Nav className="nav-btns">
-              <Button
-              className="btn-register"
-                variant="outline-dark"
-                onClick={() => setActiveModal("register")}
-              >
-                Signup
-              </Button>
-
-              <Button
-              className="btn-login"
-                variant="success"
-                onClick={() => setActiveModal("login")}
-              >
-                Login
-              </Button>
-            </Nav>
+                <Button
+                  className="btn-login"
+                  variant="success"
+                  onClick={() => setActiveModal("login")}
+                >
+                  Login
+                </Button>
+              </Nav>
+            ) : (
+              <Nav>
+                <Button className="btn-login" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </Nav>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -1,25 +1,18 @@
 import { useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
-import Button from "react-bootstrap/Button";
+import ProfileCard from "../components/ProfileCard";
 
 const ProfilePage = () => {
-    const { currentUser, logout } = useAuth();
-    const navigate = useNavigate();
+    const { currentUser } = useAuth();
 
-    const handleLogout = async () => {
-        await logout();
-        navigate("/");
-    };
 
     return (
         <>
-        <h2>Welcome {currentUser?.email}</h2>
-
-        <Button className="btn-login" onClick={handleLogout}>
-            Logout
-        </Button>
+        <h1>{currentUser?.displayName ? `Welcome back, ${currentUser?.displayName}!` : `Welcome chef!`}</h1>
+        <ProfileCard />
         </>
     )
 }
 
 export default ProfilePage;
+

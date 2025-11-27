@@ -1,10 +1,9 @@
-import NavbarMeny from "../components/NavbarMeny";
 
 const HomePage = () => {
 
     return (
         <>
-        <NavbarMeny />
+        
         <h1>Welcome to Comfort Foodie</h1>
 
         </>

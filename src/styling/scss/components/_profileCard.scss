@@ -1,0 +1,26 @@
+
+.profile-card {
+
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+
+    .card {
+        border: none;
+        background: transparent; 
+    
+        .card-body {
+            text-align: center;
+
+        }
+
+        .card-title {
+          font-size: 1.3rem;
+          font-weight: 600;
+        }
+    
+        .card-text {
+          font-size: 0.95rem;
+        }
+      }
+}

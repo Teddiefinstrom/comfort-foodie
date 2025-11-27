@@ -1,9 +1,7 @@
-import NavbarMeny from "../components/NavbarMeny";
 
 const AboutPage = () => {
   return (
     <>
-      <NavbarMeny />
       <div className="about-page">
         <h1>About Comfort Foodie</h1>
         <p>

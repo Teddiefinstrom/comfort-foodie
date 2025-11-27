@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router";
 import { type SubmitHandler, useForm } from "react-hook-form";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
 
@@ -60,7 +60,9 @@ const LoginModal = ({ show, onClose, switchToRegister }: LoginModalProps) => {
 
     try {
       await forgotPassword(emailValue);
-      toast.success("Password reset, check your inbox for instructions to reset your password.");
+      toast.success(
+        "Password reset, check your inbox for instructions to reset your password."
+      );
     } catch (error) {
       toast.error("Something went wrong, please try again later");
     }
@@ -69,7 +71,7 @@ const LoginModal = ({ show, onClose, switchToRegister }: LoginModalProps) => {
   const handleClose = () => {
     reset();
     onClose();
-  }
+  };
 
   return (
     <>
@@ -104,7 +106,7 @@ const LoginModal = ({ show, onClose, switchToRegister }: LoginModalProps) => {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Text className="switch-link" onClick={resetPassword}>
-              Forgot Password
+              <strong>Forgot Password</strong>
             </Form.Text>
             <Modal.Footer>
               <Form.Text>
