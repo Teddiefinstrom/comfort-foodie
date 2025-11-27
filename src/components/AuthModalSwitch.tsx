@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import LoginModal from "./LoginModal";
 import RegisterModal from "./RegisterModal";
-import Button from "react-bootstrap/Button";
 import { useLocation } from "react-router";
 
-const AuthModalSwitch = () => {
-    const [activeModal, setActiveModal] = useState<"login" | "register" | null>(null);
+type AuthModalProps = {
+        activeModal: "login" | "register" | null;
+        setActiveModal: (modal: "login" | "register" | null) => void;
+    
+};
+
+const AuthModalSwitch = ({ activeModal, setActiveModal }: AuthModalProps) => {
     const location = useLocation();
 
     useEffect(() => {
@@ -28,11 +32,6 @@ const AuthModalSwitch = () => {
                onClose={() => setActiveModal(null)}
                switchToLogin={() => setActiveModal("login")}
         />
-
-        <Button className="btn-login" onClick={() => setActiveModal("login")}>
-            Login
-        </Button>
-
 
         </>
     );

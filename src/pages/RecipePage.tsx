@@ -1,14 +1,13 @@
 import NavbarMeny from "../components/NavbarMeny";
 
-const HomePage = () => {
+const RecipePage = () => {
 
     return (
         <>
         <NavbarMeny />
-        <h1>Welcome to Comfort Foodie</h1>
-
+        <h1>RecipePage</h1>
         </>
-    );
-};
+    )
+}
 
-export default HomePage;
+export default RecipePage;

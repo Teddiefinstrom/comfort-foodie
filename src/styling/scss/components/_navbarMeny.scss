@@ -1,0 +1,22 @@
+.navbar {
+    background-color: $color-bg-2; 
+    padding: 1rem 1rem;
+
+  
+    .navbar-brand {
+      color: #2e2e2e;
+      font-weight: 500;
+      font-size: 2rem;
+    }
+  
+    .nav-link {
+      color: #2e2e2e;
+      font-size: 1.4rem;
+    }
+  }
+  
+  .nav-btns {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.7rem;
+  }

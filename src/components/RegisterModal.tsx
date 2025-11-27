@@ -22,7 +22,6 @@ type RegisterModalProps = {
 
 const RegisterModal = ({ show, onClose, switchToLogin }: RegisterModalProps) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-  //const [isLoading, setIsLoading] = useState(true);
 
   const { signup } = useAuth();
   const navigate = useNavigate();
@@ -42,8 +41,8 @@ const RegisterModal = ({ show, onClose, switchToLogin }: RegisterModalProps) => 
   });
 
   const signupNewUser: SubmitHandler<SignupFormType> = async (data) => {
+    setIsSubmitting(true);
     try {
-      setIsSubmitting(true);
       await signup(data.email, data.password);
       reset();
       navigate("/profile");
@@ -51,15 +50,27 @@ const RegisterModal = ({ show, onClose, switchToLogin }: RegisterModalProps) => 
       toast.success("Your account has been created! 🎉");
     } catch (error) {
       console.error(error);
-      toast.error("Could not create account, please try again 💔");
+      if (
+        error instanceof Error &&
+        error.message.includes("auth/email-already-in-use")
+      ) {
+        toast.error("This email is already in use, please choose another one.");
+      } else {
+        toast.error("Could not create account, please try again 💔");
+      }
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const handleClose = () => {
+    reset();
+    onClose();
+  }
+
   return (
     <>
-        <Modal show={show} onHide={onClose} dialogClassName="auth-modal">
+        <Modal show={show} onHide={handleClose} dialogClassName="auth-modal">
           <Modal.Header closeButton>
             <Modal.Title>Create an new account</Modal.Title>
           </Modal.Header>
