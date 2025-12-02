@@ -7,6 +7,7 @@ import RecipePage from "./pages/RecipePage";
 import IngrediensPage from "./pages/IngrediensPage";
 import AboutPage from "./pages/AboutPage";
 import NavbarMeny from "./components/NavbarMeny";
+import EditProfilePage from "./pages/EditProfilePage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         {/*ProtectedRoutes */}
         <Route element={<ProtectedRoutes />}>
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/edit" element={<EditProfilePage />} />
         </Route>
       </Routes>
     </>

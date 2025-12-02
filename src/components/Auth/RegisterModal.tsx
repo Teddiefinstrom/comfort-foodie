@@ -6,6 +6,8 @@ import { useNavigate } from "react-router";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { doc, setDoc } from "firebase/firestore";
+import { userCol } from "../../service/firebase";
 
 type SignupFormType = {
   email: string;
@@ -46,7 +48,15 @@ const RegisterModal = ({
   const signupNewUser: SubmitHandler<SignupFormType> = async (data) => {
     setIsSubmitting(true);
     try {
-      await signup(data.email, data.password);
+      const newUser = await signup(data.email, data.password);
+      const uid = newUser.user.uid;
+
+      await setDoc(doc(userCol, uid), {
+        id: uid,
+        //name: data.email,
+        email: data.email,
+        photo: null,
+      })
       reset();
       navigate("/profile");
 

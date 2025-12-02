@@ -1,11 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, useNavigate } from "react-router";
 import AuthModalSwitch from "./Auth/AuthModalSwitch";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import useAuth from "../hooks/useAuth";
+import profilePic from "../styling/images/hjb.jpg";
 
 function NavbarMeny() {
   const [activeModal, setActiveModal] = useState<"login" | "register" | null>(
@@ -64,9 +66,30 @@ function NavbarMeny() {
               </Nav>
             ) : (
               <Nav>
-                <Button className="btn-login" onClick={handleLogout}>
-                  Logout
-                </Button>
+                <NavDropdown
+                align="end"
+                  title={
+                    <img
+                      src={currentUser?.photoURL || profilePic}
+                      alt="profile"
+                      className="nav-avatar"
+                    />
+                  }
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item as={Link} to="/profile">
+                    Profile
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/recipes">
+                    My recipes
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item as={Link} to="/">
+                    <Button className="btn-login" onClick={handleLogout}>
+                      Logout
+                    </Button>
+                  </NavDropdown.Item>
+                </NavDropdown>
               </Nav>
             )}
           </Navbar.Collapse>

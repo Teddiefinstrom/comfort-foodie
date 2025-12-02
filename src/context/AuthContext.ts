@@ -8,13 +8,15 @@ interface AuthContextType {
     signup: (email: string, password: string) => Promise <UserCredential>;
     logout: () => Promise <void>;
     forgotPassword: (email: string) => Promise<void>;
-    setProfileName: (profileName: string) => Promise <void>;
-    setEmail: (email: string) => Promise <void>;
-    setPassword: (password: string) => Promise <void>;
-    //setProfilePhoto: (photoURL: string) => Promise <void>;
-    //profilePhotoURL: string | null;
-    userEmail: string | null;
-    userName: string | null;
+    
+    // setProfileName: (profileName: string) => Promise <void>;
+    // setEmail: (email: string) => Promise <void>;
+    // setPassword: (password: string) => Promise <void>;
+    // setProfilePic: (photoURL: string) => Promise <void>;
+    // profilePhoto: string | null;
+    // userEmail: string | null;
+    // userName: string | null;
+    
 
 }
 

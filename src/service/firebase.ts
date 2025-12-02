@@ -1,8 +1,15 @@
 
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 import { getFirestore, type DocumentData, collection, CollectionReference } from "firebase/firestore";
 
+export interface UserProfile {
+    id: string;
+    //name: string;
+    email: string;
+    photo: string | null;
+}
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string,
@@ -20,7 +27,10 @@ export const auth = getAuth(app);
 
 export const db = getFirestore(app);
 
+export const storage = getStorage(app);
+
 export const setupCollection = <T = DocumentData>(ColName: string) => {
     return collection(db, ColName) as CollectionReference<T>;
    }
 
+export const userCol = setupCollection<UserProfile>('users');

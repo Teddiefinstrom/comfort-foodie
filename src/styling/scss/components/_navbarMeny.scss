@@ -13,6 +13,16 @@
       color: #2e2e2e;
       font-size: 1.4rem;
     }
+
+    .nav-avatar {
+        width: 45px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+      }
+      
   }
   
   .nav-btns {
