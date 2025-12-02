@@ -1,14 +1,15 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import Button from "react-bootstrap/Button";
-import profilePic from "../styling/images/hjb.jpg";
+import profilePic from "../styling/images/cf-default-profile.png";
 import useAuth from "../hooks/useAuth";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router";
 import { userCol } from "../service/firebase";
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, deleteDoc } from "firebase/firestore";
 import {
   updatePassword,
   updateProfile,
+  deleteUser,
   reauthenticateWithCredential,
   EmailAuthProvider,
 } from "firebase/auth";
@@ -39,7 +40,6 @@ const EditProfilePage = () => {
       password: "",
     },
   });
-
 
   const reauthenticate = async (password: string) => {
     if (!currentUser || !currentUser.email) return;
@@ -99,15 +99,48 @@ const EditProfilePage = () => {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    if (!currentUser) return;
+
+    try {
+      const password = prompt("Enter your current password to delete account");
+
+      if (!password) {
+        toast.error("You must enter your password to delete account");
+        return;
+      }
+
+      const credential = EmailAuthProvider.credential(
+        currentUser.email!,
+        password
+      );
+
+      await reauthenticateWithCredential(currentUser, credential);
+
+      const userRef = doc(userCol, currentUser.uid);
+      await deleteDoc(userRef);
+
+      await deleteUser(currentUser);
+
+      toast.success("YOur account has been deleted");
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      toast.error("Could not delete account");
+    }
+  };
+
   return (
     <>
       <div className="edit-profile">
         <div className="profile-header">
-          <img src={currentUser?.photoURL || profilePic} 
-          alt="Profile" 
-          className="profile-avatar" />
+          <img
+            src={currentUser?.photoURL || profilePic}
+            alt="Profile"
+            className="profile-avatar"
+          />
 
-{/** 
+          {/** 
           <Button variant="secondary" 
           className="btn-upload"
           >
@@ -117,8 +150,7 @@ const EditProfilePage = () => {
         </div>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
-          
-        <Form.Group className="mb-3" >
+          <Form.Group className="mb-3">
             <Form.Label>Profile Picture</Form.Label>
             <Form.Control
               type="file"
@@ -126,7 +158,6 @@ const EditProfilePage = () => {
               {...register("profilePic")}
             />
           </Form.Group>
-
 
           <Form.Group className="mb-3" controlId="displayName">
             <Form.Label>User Name</Form.Label>
@@ -161,7 +192,11 @@ const EditProfilePage = () => {
           <Button type="submit" className="btn-login">
             Save Changes
           </Button>
-          <Button variant="danger" className="btn-delete">
+          <Button
+            variant="danger"
+            className="btn-delete"
+            onClick={handleDeleteAccount}
+          >
             Delete Account
           </Button>
         </Form>

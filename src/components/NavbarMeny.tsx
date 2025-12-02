@@ -7,7 +7,7 @@ import AuthModalSwitch from "./Auth/AuthModalSwitch";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import useAuth from "../hooks/useAuth";
-import profilePic from "../styling/images/hjb.jpg";
+import profilePic from "../styling/images/cf-default-profile.png";
 
 function NavbarMeny() {
   const [activeModal, setActiveModal] = useState<"login" | "register" | null>(
