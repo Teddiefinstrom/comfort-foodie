@@ -1,27 +1,27 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCategory } from "../service/mealDB";
+import { getPreviewByCategory } from "../service/mealDB";
 import Carousel from "../components/Carousel";
 
 const HomePage = () => {
 
   const { data: sides } = useQuery({
     queryKey: ["sides"],
-    queryFn: () => getCategory("Side"),
+    queryFn: () => getPreviewByCategory("Side"),
   });
 
   const { data: vegeterian } = useQuery({
     queryKey: ["vegeterian"],
-    queryFn: () => getCategory("Vegetarian"),
+    queryFn: () => getPreviewByCategory("Vegetarian"),
   });
 
   const { data: chicken } = useQuery({
     queryKey: ["chicken"],
-    queryFn: () => getCategory("Chicken"),
+    queryFn: () => getPreviewByCategory("Chicken"),
   });
 
   const { data: desserts } = useQuery({
     queryKey: ["desserts"],
-    queryFn: () => getCategory("Dessert"),
+    queryFn: () => getPreviewByCategory("Dessert"),
   });
 
   return (

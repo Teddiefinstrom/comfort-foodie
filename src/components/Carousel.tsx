@@ -1,8 +1,8 @@
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router';
-import type { Recipe } from "../types/recipe";
+import type { RecipePreview } from "../types/recipe";
 
-const Carousel = ({ title, recipes }: { title: string; recipes: Recipe[]; }) => {
+const Carousel = ({ title, recipes }: { title: string; recipes: RecipePreview[]; }) => {
 
   return (
     <>

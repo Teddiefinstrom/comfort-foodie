@@ -1,9 +1,9 @@
 import Card from "react-bootstrap/Card";
 import placeholderPic from "../styling/images/cf-default-profile.png";
-import type { Recipe } from "../types/recipe";
+import type { RecipePreview} from "../types/recipe";
 import { Link } from "react-router";
 
-const RecipeCard = ({ strMeal, strMealThumb, idMeal }: Recipe) => {
+const RecipeCard = ({ strMeal, strMealThumb, idMeal }: RecipePreview) => {
 
   return (
     <>

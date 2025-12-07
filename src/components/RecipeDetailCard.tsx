@@ -1,8 +1,8 @@
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import type { Recipe } from "../types/recipe";
+import type { RecipeFull } from "../types/recipe";
 
-const RecipeDetailCard = ({ recipe }: { recipe: Recipe }) => {
+const RecipeDetailCard = ({ recipe }: { recipe: RecipeFull }) => {
 
     const ingredients: { ingredient: string; measure: string }[] = [];
 
