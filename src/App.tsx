@@ -8,6 +8,8 @@ import IngrediensPage from "./pages/IngrediensPage";
 import AboutPage from "./pages/AboutPage";
 import NavbarMeny from "./components/NavbarMeny";
 import EditProfilePage from "./pages/EditProfilePage";
+import Footer from "./components/Footer";
+import RecipeDetailPage from "./pages/RecipeDetailPage";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/recipes" element={<RecipePage />} />
+        <Route path="/recipe/:id" element={<RecipeDetailPage />} />
         <Route path="/ingrediens" element={<IngrediensPage />} />
         <Route path="/about" element={<AboutPage />} />
 
@@ -26,6 +29,7 @@ function App() {
           <Route path="/profile/edit" element={<EditProfilePage />} />
         </Route>
       </Routes>
+      <Footer />
     </>
   );
 }

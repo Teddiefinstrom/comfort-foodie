@@ -1,13 +1,10 @@
-
 const Footer = () => {
-
     return (
+      <footer className="app-footer">
 
-        <>
-        <footer className="footer">@ 2025 Comfort Foodie by Teddie Finström</footer>
-        </>
-    )
-
-}
-
-export default Footer;
+      </footer>
+    );
+  };
+  
+  export default Footer;
+  

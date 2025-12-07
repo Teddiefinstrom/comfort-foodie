@@ -14,8 +14,12 @@
 @import 'components/navbarMeny';
 @import 'components/footer';
 @import 'components/profileCard';
+@import 'components/recipeCard';
+@import 'components/carousel';
 
 // Pages
 @import 'pages/homePage';
 @import 'pages/aboutPage';
 @import 'pages/editProfilePage';
+@import 'pages/recipePage';
+@import 'pages/ingrediens';
