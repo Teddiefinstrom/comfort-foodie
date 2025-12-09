@@ -32,7 +32,7 @@ export const getPreviewByArea = async (
   return data.meals || [];
 };
 
-// ingredient preview
+// Ingredient Preview
 export const getPreviewByIngredient = async (
   ingredient: string
 ): Promise<RecipePreview[]> => {
@@ -44,12 +44,12 @@ export const getPreviewByIngredient = async (
   return data.meals || [];
 };
 
-// Get all recipes in cagetogires at once
+// Get all recipes in cagetogires, area and ingredients at once
 export const getAllPreviewRecipes = async (): Promise<RecipePreview[]> => {
-    const categories = await getAllCategories();
- const allRecipesMap = new Map<string, RecipePreview>();
+  const categories = await getAllCategories();
+  const allRecipesMap = new Map<string, RecipePreview>();
 
- for (const cat of categories) {
+  for (const cat of categories) {
     const res = await fetch(`${BASE_URL}/filter.php?c=${cat}`);
     const data: { meals: RecipePreview[] } = await res.json();
 
@@ -63,7 +63,7 @@ export const getAllPreviewRecipes = async (): Promise<RecipePreview[]> => {
   return Array.from(allRecipesMap.values());
 };
 
-
+// Get recipies from categories so render on explore page
 export const getAllCategories = async (): Promise<string[]> => {
   const res = await fetch(`${BASE_URL}/list.php?c=list`);
   if (!res.ok) throw new Error("Failed to fetch category list");

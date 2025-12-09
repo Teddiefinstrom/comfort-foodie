@@ -1,122 +1,96 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useMemo, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import FilterSearch from "../components/FilterSearch";
 import RecipeCard from "../components/RecipeCard";
-import {
-    getCategories,
-    getAreas,
-    getIngredients,
-    getAllPreviewRecipes,
-    getPreviewByCategory,
-    getPreviewByArea,
-    getPreviewByIngredient,
-  } from "../service/mealDB";
-import type { RecipePreview } from "../types/recipe";
+import useRecipeFilters from "../hooks/useRecipeFilters";
+import useRecipePreviews from "../hooks/useRecipePreviews";
+import useInfiniteScroll from "../hooks/useInfiniteScroll";
+import toast from "react-hot-toast";
+import Loader from "../components/ErrorHandling/Loader";
+import HeroBanner from "../components/HeroBanner";
 
 const RecipePage = () => {
-  const [visibleCount, setVisibleCount] = useState(20);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useState("");
-  
-  const { data: categories } = useQuery({
-    queryKey: ["categories"], 
-    queryFn: getCategories});
 
-  const { data: areas } = useQuery({
-    queryKey: ["areas"], 
-    queryFn: getAreas});
+  const {
+    categories,
+    areas,
+    ingredients,
+    isLoading: filtersLoading,
+    isError: filterError,
+  } = useRecipeFilters();
 
-  const { data: ingredients } = useQuery({
-    queryKey: ["ingredients"], 
-    queryFn: getIngredients});
+  const previewsQuery = useRecipePreviews(
+    selectedCategory,
+    selectedArea,
+    selectedIngredient
+  );
 
-  const { data: previews } = useQuery({
-  queryKey: ["preview", selectedCategory, selectedArea, selectedIngredient],
-  queryFn: async () => {
-    if (selectedCategory) return getPreviewByCategory(selectedCategory);
-    if (selectedArea) return getPreviewByArea(selectedArea);
-    if (selectedIngredient) return getPreviewByIngredient(selectedIngredient);
+  const previews = previewsQuery.data || [];
 
-    return getAllPreviewRecipes();
-  },
-});
+  const filteredRecipes = useMemo(() => {
+    return searchQuery.trim()
+      ? previews.filter((recipe) =>
+          recipe.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      : previews;
+  }, [previews, searchQuery]);
 
-  const filteredRecipes = useMemo<RecipePreview[]>(() => {
-    if (!previews) return [];
+  const { visibleItems, loadMoreRef } = useInfiniteScroll(filteredRecipes);
 
-    let list = previews;
-  
-    if (searchQuery.trim()) {
-      list = list.filter((recipe) =>
-        recipe.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-  return list;
-    }, [previews, searchQuery]);
-  
-  
-  const visibleRecipes = filteredRecipes.slice(0, visibleCount);
-  const loadMoreRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!loadMoreRef.current) return;
-
-    const observer = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-            setVisibleCount((prev) => {
-                if (prev >= filteredRecipes.length) return prev;
-                return prev + 20;
-              });
-          }
-        });
-
-    observer.observe(loadMoreRef.current);
-    return () => observer.disconnect();
-  }, [filteredRecipes]);
-
+  if (filterError || previewsQuery.isError) {
+    console.error(previewsQuery.error);
+    toast.error("Something went wrong. Please try again later.");
+    return null;
+  }
 
   return (
     <>
-      <div className="recipe-hero">
-        <div className="hero-content">
-          <h1>Recipes</h1>
-          <SearchBar onSearch={setSearchQuery} />
-        </div>
-      </div>
+      <HeroBanner background="/src/styling/images/bbbff.jpg">
+        <h1>Recipes</h1>
+        <SearchBar onSearch={setSearchQuery} />
+      </HeroBanner>
 
-      <div>
-        <FilterSearch 
-        categories={categories}
-        areas={areas}
-        ingredients={ingredients}
-        onCategorySelect={(v) => {
-            setSelectedCategory(v);
-            setSelectedArea("");
-            setSelectedIngredient("");
-          }}
-          onAreaSelect={(v) => {
-            setSelectedArea(v);
-            setSelectedCategory("");
-            setSelectedIngredient("");
-          }}
-          onIngredientSelect={(v) => {
-            setSelectedIngredient(v);
-            setSelectedCategory("");
-            setSelectedArea("");
-          }}
-        />
-      </div>
-      <div className="recipe-page">
-        <div className="recipe-grid">
-          {visibleRecipes.map((recipe) => (
-            <RecipeCard key={recipe.idMeal} {...recipe} />
-          ))}
-        </div>
-        <div ref={loadMoreRef}></div>
-      </div>
+      {filtersLoading || previewsQuery.isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <div>
+            <FilterSearch
+              categories={categories}
+              areas={areas}
+              ingredients={ingredients}
+              onCategorySelect={(v) => {
+                setSelectedCategory(v);
+                setSelectedArea("");
+                setSelectedIngredient("");
+              }}
+              onAreaSelect={(v) => {
+                setSelectedArea(v);
+                setSelectedCategory("");
+                setSelectedIngredient("");
+              }}
+              onIngredientSelect={(v) => {
+                setSelectedIngredient(v);
+                setSelectedCategory("");
+                setSelectedArea("");
+              }}
+            />
+          </div>
+
+          <div className="recipe-page">
+            <div className="recipe-grid">
+              {visibleItems.map((recipe) => (
+                <RecipeCard key={recipe.idMeal} {...recipe} />
+              ))}
+            </div>
+            <div ref={loadMoreRef}></div>
+          </div>
+        </>
+      )}
     </>
   );
 };

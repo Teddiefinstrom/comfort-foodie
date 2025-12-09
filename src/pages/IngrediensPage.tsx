@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import FilterIngredients from "../components/FilterIng";
 import { getIngredients } from "../service/mealDB";
+import HeroBanner from "../components/HeroBanner";
 
 const IngrediensPage = () => {
   const { data: ingredients } = useQuery({
@@ -11,13 +12,13 @@ const IngrediensPage = () => {
   const handleSelect = (ing: string) => {
     console.log("Selected ingredient:", ing);
   };
-  
 
   return (
     <>
-      <div className="ingrediens-hero">
-        <h1>IngrediensPage</h1>
-      </div>
+      <HeroBanner background="/src/styling/images/ingrediens.jpg">
+        <h1>Ingrediens Library</h1>
+
+      </HeroBanner>
 
       <FilterIngredients
         ingredients={ingredients}

@@ -10,6 +10,7 @@ import NavbarMeny from "./components/NavbarMeny";
 import EditProfilePage from "./pages/EditProfilePage";
 import Footer from "./components/Footer";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/recipe/:id" element={<RecipeDetailPage />} />
         <Route path="/ingrediens" element={<IngrediensPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="*" element={<ErrorPage />} />
 
         {/*ProtectedRoutes */}
         <Route element={<ProtectedRoutes />}>
