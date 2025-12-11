@@ -14,7 +14,6 @@ const HomePage = () => {
 
   const [sides, vegetarian, chicken, desserts] = data;
 
-  //if (isLoading) return <Loader />;
   if (isError) {
     console.error(error);
     toast.error("Something went wrong. Please try again later.");

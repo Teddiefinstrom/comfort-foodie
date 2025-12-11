@@ -24,10 +24,15 @@ const RecipeDetailCard = ({ recipe }: { recipe: RecipeFull }) => {
   
 
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={recipe.strMealThumb} />
+<Card className="recipe-detail-card">
+  <div className="detail-layout">
+    
+    <div className="left-section">
+      <Card.Img variant="top" src={recipe.strMealThumb} className="detail-img" />
+
       <Card.Body>
         <Card.Title>{recipe.strMeal}</Card.Title>
+
         {recipe.strCategory && (
           <Card.Text>
             <strong>Category:</strong> {recipe.strCategory}
@@ -40,30 +45,31 @@ const RecipeDetailCard = ({ recipe }: { recipe: RecipeFull }) => {
           </Card.Text>
         )}
       </Card.Body>
-      <ListGroup className="list-group-flush">
-        {/** Ingredients */}
-        <ListGroup.Item>
-          Ingrediens:
-          <ul style={{ marginTop: "0.5rem" }}>
-            {ingredients.map((item, index) => (
-              <li key={index}>
-                {item.measure} {item.ingredient}
-              </li>
-            ))}
-          </ul>
-        </ListGroup.Item>
 
-        {/** Instructions */}
-        <ListGroup.Item>
-          Instructions:
-          <div style={{ marginTop: "0.5rem" }}>
-            {steps?.map((step, index) => (
-              <p key={index}>{step}</p>
-            ))}
-          </div>
-        </ListGroup.Item>
-      </ListGroup>
-    </Card>
+      <div className="ingredients-box">
+        <h4>Ingredients</h4>
+        <ul>
+          {ingredients.map((item, index) => (
+            <li key={index}>
+              {item.measure} {item.ingredient}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div className="right-section">
+      <h3>Instructions</h3>
+      {steps?.map((step, index) => (
+        <p key={index}>{step}</p>
+      ))}
+    </div>
+
+  </div>
+</Card>
+
+
+
   );
 };
 

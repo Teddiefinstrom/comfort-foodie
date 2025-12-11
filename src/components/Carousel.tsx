@@ -7,7 +7,7 @@ const Carousel = ({ title, recipes }: { title: string; recipes: RecipePreview[];
   return (
     <>
 
-<h2 className ="intro-header">{title}</h2>
+<h2 className="carousel-header">{title}</h2>
 
 <div className="carousel-swiper">
   {recipes.map((recipe) => (
@@ -22,7 +22,9 @@ src={recipe.strMealThumb ||
       />
     </Link>
       <Card.Body>
+      <Link to={`/recipe/${recipe.idMeal}`} className="recipe-title-link">
         <Card.Title>{recipe.strMeal}</Card.Title>
+        </Link>
       </Card.Body>
       
     </Card>

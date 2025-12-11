@@ -13,12 +13,10 @@ const RecipePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
-  const [selectedIngredient, setSelectedIngredient] = useState("");
 
   const {
     categories,
     areas,
-    ingredients,
     isLoading: filtersLoading,
     isError: filterError,
   } = useRecipeFilters();
@@ -26,7 +24,6 @@ const RecipePage = () => {
   const previewsQuery = useRecipePreviews(
     selectedCategory,
     selectedArea,
-    selectedIngredient
   );
 
   const previews = previewsQuery.data || [];
@@ -62,21 +59,13 @@ const RecipePage = () => {
             <FilterSearch
               categories={categories}
               areas={areas}
-              ingredients={ingredients}
               onCategorySelect={(v) => {
                 setSelectedCategory(v);
                 setSelectedArea("");
-                setSelectedIngredient("");
               }}
               onAreaSelect={(v) => {
                 setSelectedArea(v);
                 setSelectedCategory("");
-                setSelectedIngredient("");
-              }}
-              onIngredientSelect={(v) => {
-                setSelectedIngredient(v);
-                setSelectedCategory("");
-                setSelectedArea("");
               }}
             />
           </div>

@@ -1,18 +1,104 @@
 .carousel-swiper {
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    padding: 1rem;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .carousel-swiper::-webkit-scrollbar {
+  margin-left: 1rem;
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
     display: none;
   }
-  
-  .carousel-swiper > * {
+
+  > * {
     flex: 0 0 auto;
     scroll-snap-align: start;
   }
+
+  .card {
+    width: 11rem;
+    min-width: 11rem;
+    border: none;
+    background: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    img {
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 0.7rem 0.8rem;
+
+      .card-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+    }
+
+    .recipe-title-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @include tablet {
+    .card {
+      width: 12rem;
+      min-width: 12rem;
+
+      img {
+        height: 9rem;
+      }
+
+      .card-body .card-title {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @include laptop {
+    .card {
+      width: 13rem;
+      min-width: 13rem;
+
+      img {
+        height: 9.5rem;
+      }
+    }
+  }
+
+  @include desktop {
+    .card {
+      width: 14rem;
+      min-width: 14rem;
+
+      img {
+        height: 10rem;
+      }
+
+      .card-body .card-title {
+        font-size: 1.05rem;
+      }
+    }
+  }
+}
+
+.carousel-header {
+  margin: 0.5rem;
+  text-align: start;
+}

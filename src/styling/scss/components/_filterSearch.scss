@@ -1,0 +1,43 @@
+.filter-bar {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;   
+    gap: 1rem;                 
+    margin-bottom: 1rem;
+  }
+  
+  .filter-main-btn {
+    width: 7rem;
+    background-color: $color-orange;
+    border-color: $color-orange;
+    color: $color-text-primary; 
+  
+    &:hover,
+    &:focus {
+      background-color: $color-orange-hover;
+      border-color: $color-orange-hover;
+      color: $color-text-primary;
+    }
+  }
+  
+  .sub-btn {
+    color: #000;
+    background: transparent;
+    margin: 0;
+  
+    &:hover,
+    &.active {
+      background: $color-orange;
+      border-color: $color-orange;
+      color: #fff;
+    }
+  }
+  
+  .filter-submenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;             
+    margin-top: 0.5rem;
+  }
+  

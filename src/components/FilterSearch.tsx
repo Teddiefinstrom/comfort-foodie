@@ -4,21 +4,17 @@ import Button from "react-bootstrap/esm/Button";
 type SearchFilterProps = {
   categories: { strCategory: string }[] | undefined;
   areas: { strArea: string }[] | undefined;
-  ingredients: { strIngredient: string }[] | undefined;
 
   onCategorySelect: (category: string) => void;
   onAreaSelect: (area: string) => void;
-  onIngredientSelect: (ingredient: string) => void;
 
 };
 
-const FilterSearch = ({ categories, areas, ingredients, onCategorySelect, onAreaSelect, onIngredientSelect,}: SearchFilterProps) => {
+const FilterSearch = ({ categories, areas, onCategorySelect, onAreaSelect,}: SearchFilterProps) => {
   const [openFilter, setOpenFilter] = useState<
-    "" | "category" | "area" | "ingredient"
-  >("");
+    "" | "category" | "area" >("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
-  const [selectedIngredient, setSelectedIngredient] = useState("");
 
 
   const handleCategory = (cat: string) => {
@@ -32,12 +28,6 @@ onCategorySelect(newValue);
     setSelectedArea(newValue);
     onAreaSelect(newValue);
       }
-
-      const handleIngredient = (ing: string) => {
-        const newValue = selectedIngredient === ing ? "" : ing;
-        setSelectedIngredient(newValue);
-        onIngredientSelect(newValue);
-          }
 
 
   return (
@@ -61,15 +51,7 @@ onCategorySelect(newValue);
         Areas
       </Button>
 
-      <Button
-      variant="warning"
-        className="filter-main-btn"
-        onClick={() =>
-          setOpenFilter(openFilter === "ingredient" ? "" : "ingredient")
-        }
-      >
-        Ingredients
-      </Button>
+
     </div>
 
 {openFilter === "category" && (
@@ -106,22 +88,6 @@ onCategorySelect(newValue);
     </div>
   )}
 
-{openFilter === "ingredient" && (
-    <div className="filter-submenu">
-      {ingredients?.map((ing) => (
-        <Button
-        variant="outline-dark"
-          key={ing.strIngredient}
-          className={
-            selectedIngredient === ing.strIngredient ? "sub-btn active" : "sub-btn"
-          }
-          onClick={() => handleIngredient(ing.strIngredient)}
-        >
-          {ing.strIngredient}
-        </Button>
-      ))}
-    </div>
-  )}
   </>
   );
 };

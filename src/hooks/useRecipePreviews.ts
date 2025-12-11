@@ -3,20 +3,17 @@ import {
   getAllPreviewRecipes,
   getPreviewByArea,
   getPreviewByCategory,
-  getPreviewByIngredient,
 } from "../service/mealDB";
 
 const useRecipePreviews = (
   category: string,
   area: string,
-  ingredient: string
 ) => {
     return useQuery({
-        queryKey: ["previews", category, area, ingredient],
+        queryKey: ["previews", category, area],
         queryFn: () => {
             if (category) return getPreviewByCategory(category);
             if (area) return getPreviewByArea(area);
-            if (ingredient) return getPreviewByIngredient(ingredient);
             return getAllPreviewRecipes();
           },
         });
