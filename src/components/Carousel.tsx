@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router';
 import type { RecipePreview } from "../types/recipe";
+import LikeBtn from './UserProfile/Likebtn';
 
 const Carousel = ({ title, recipes }: { title: string; recipes: RecipePreview[]; }) => {
 
@@ -12,6 +13,8 @@ const Carousel = ({ title, recipes }: { title: string; recipes: RecipePreview[];
 <div className="carousel-swiper">
   {recipes.map((recipe) => (
 <Card key={recipe.idMeal} style={{ width: '10rem' }}>
+<div className="img-wrapper">
+
     <Link to={`/recipe/${recipe.idMeal}`}>
 <Card.Img 
 variant="top" 
@@ -21,6 +24,15 @@ src={recipe.strMealThumb ||
       alt={recipe.strMeal}
       />
     </Link>
+    <LikeBtn
+      recipe={{
+        idMeal: recipe.idMeal,
+        title: recipe.strMeal,
+        image: recipe.strMealThumb,
+      }}
+    />
+    </div>
+
       <Card.Body>
       <Link to={`/recipe/${recipe.idMeal}`} className="recipe-title-link">
         <Card.Title>{recipe.strMeal}</Card.Title>

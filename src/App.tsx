@@ -11,6 +11,7 @@ import EditProfilePage from "./pages/EditProfilePage";
 import Footer from "./components/Footer";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
 import ErrorPage from "./pages/ErrorPage";
+import SavedRecipesPage from "./pages/SavedRecipesPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route element={<ProtectedRoutes />}>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/profile/edit" element={<EditProfilePage />} />
+          <Route path="profile/recipes" element={<SavedRecipesPage />} />
         </Route>
       </Routes>
       <Footer />

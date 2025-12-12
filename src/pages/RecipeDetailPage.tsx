@@ -16,9 +16,11 @@ const RecipeDetailPage = () => {
   if (isLoading) return <Loader />
   if (error || !data) return toast.error("Something went wrong. Please try again later");
 
-  return <>
+  return ( 
+  <div className="recipe-detail-page">
   <RecipeDetailCard recipe={data}/>
-  </>;
+  </div>
+  );
 };
 
 export default RecipeDetailPage;

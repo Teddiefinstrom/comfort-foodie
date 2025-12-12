@@ -37,7 +37,7 @@ function NavbarMeny() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={Link} to="/recipes">
-                Recipies
+                Recipes
               </Nav.Link>
               <Nav.Link as={Link} to="/ingrediens">
                 Ingrediens
@@ -45,9 +45,12 @@ function NavbarMeny() {
               <Nav.Link as={Link} to="/about">
                 About
               </Nav.Link>
-              <Nav.Link as={Link} to="/search">
-                Search
-              </Nav.Link>
+              {currentUser && (
+  <Nav.Link as={Link} to="/profile/recipes">
+    Saved Recipes
+  </Nav.Link>
+)}
+
             </Nav>
             {!currentUser ? (
               <Nav className="nav-btns">
@@ -83,7 +86,7 @@ function NavbarMeny() {
                   <NavDropdown.Item as={Link} to="/profile">
                     Profile
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/recipes">
+                  <NavDropdown.Item as={Link} to="/profile/recipes">
                     My recipes
                   </NavDropdown.Item>
                   <NavDropdown.Divider />

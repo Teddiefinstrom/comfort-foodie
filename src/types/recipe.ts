@@ -1,3 +1,5 @@
+import type { Timestamp } from "firebase/firestore";
+
 export interface RecipePreview {
     idMeal: string;
     strMeal: string;
@@ -29,4 +31,18 @@ export interface RecipePreview {
     strIngredient: string;
     strDescription: string | null;
   }
+
+  export interface SavedRecipe {
+
+    idMeal: string;
+    title: string;
+    image: string;
+    createdAt: Timestamp;
+  }
   
+  export interface RecipeLikeData {
+    idMeal: string;
+    title: string;
+    image: string;
+}
+
