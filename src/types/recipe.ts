@@ -46,3 +46,9 @@ export interface RecipePreview {
     image: string;
 }
 
+// Collage Type
+export interface Collage {
+    id: string;
+    title: string;
+    createdAt: Timestamp;
+}
