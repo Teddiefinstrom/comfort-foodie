@@ -123,13 +123,13 @@ export const getIngredientsThumb = (name: string) => {
 };
 
 // Ingredients Detail Info
-export const getIngredientsDetails = async (name: string): Promise<Ingredient | null> => {
-  const res = await fetch(`${BASE_URL}/search.php?i=${name}`);
-  if (!res.ok) throw new Error ("Failed to fetch ingredients details");
+// export const getIngredientsDetails = async (name: string): Promise<Ingredient | null> => {
+//   const res = await fetch(`${BASE_URL}/search.php?i=${name}`);
+//   if (!res.ok) throw new Error ("Failed to fetch ingredients details");
 
-  const data = await res.json();
-  return data.ingredients ? data.ingredients[0] : null;
-};
+//   const data = await res.json();
+//   return data.ingredients ? data.ingredients[0] : null;
+// };
 
 // Get recipes by ingredients (detail page)
 export const getRecipesByIngredients = async (ingredient: string): Promise<RecipePreview[]> => {

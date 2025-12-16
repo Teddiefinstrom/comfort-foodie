@@ -39,7 +39,7 @@ const IngredientsPage = () => {
 
   const { visibleItems, loadMoreRef, isLoadingMore } = useInfiniteScroll(
     activeLetter ? filterByLetter : sortedIngredients,
-    40
+    20
   );
 
   const itemsToShow = activeLetter ? filterByLetter : visibleItems;
@@ -79,7 +79,7 @@ const IngredientsPage = () => {
             {itemsToShow.map((ing) => (
               <Link
                 key={ing.idIngredient}
-                to={`/ingredients/${ing.strIngredient}`}
+                to={`/ingredients/${encodeURIComponent(ing.strIngredient)}`}
                 className="ingredient-card"
               >
                 <img

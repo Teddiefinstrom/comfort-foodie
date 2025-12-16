@@ -13,6 +13,7 @@ import RecipeDetailPage from "./pages/RecipeDetailPage";
 import ErrorPage from "./pages/ErrorPage";
 import SavedRecipesPage from "./pages/SavedRecipesPage";
 import CollageDetailPage from "./pages/CollageDetailPage";
+import IngredientDetailPage from "./pages/IngredientDetailPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/recipes" element={<RecipePage />} />
         <Route path="/recipe/:id" element={<RecipeDetailPage />} />
         <Route path="/ingredients" element={<IngredientsPage />} />
+        <Route path="/ingredients/:name" element={<IngredientDetailPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<ErrorPage />} />
 
