@@ -30,6 +30,8 @@ export interface RecipePreview {
     idIngredient: string;
     strIngredient: string;
     strDescription: string | null;
+    strThumb: string | null;
+    strType?: string | null;
   }
 
   export interface SavedRecipe {

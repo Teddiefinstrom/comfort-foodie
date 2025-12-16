@@ -45,3 +45,19 @@ export const collagesCol = (uid: string) =>
         );
         await deleteDoc(ref);
     }
+
+
+    export const getRecipesInCollage = async (uid: string, collageId: string) => {
+        const snaps = await getDocs(
+            subCol("users", uid, "collages", collageId, "recipes")
+        );
+
+        return snaps.docs.map((d) => {
+        const data = d.data() as RecipeLikeData;
+
+        return {
+            ...data,
+            idMeal: d.id
+        }
+        });
+    };

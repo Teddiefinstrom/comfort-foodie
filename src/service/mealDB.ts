@@ -8,6 +8,7 @@ import type {
 
 const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
 
+
 //  Category Preview
 export const getPreviewByCategory = async (
   category: string
@@ -106,7 +107,7 @@ export const getAreas = async (): Promise<Area[]> => {
   return data.meals;
 };
 
-// Get Ingredients for filtering
+// Ingredients Page
 export const getIngredients = async (): Promise<Ingredient[]> => {
   const res = await fetch(`${BASE_URL}/list.php?i=list`);
   if (!res.ok) throw new Error("Failed to fetch ingredients");
@@ -114,3 +115,28 @@ export const getIngredients = async (): Promise<Ingredient[]> => {
   const data: { meals: Ingredient[] } = await res.json();
   return data.meals;
 };
+
+// Ingredients Page - Get Img
+export const getIngredientsThumb = (name: string) => {
+  const safe = encodeURIComponent(name);
+  return `https://www.themealdb.com/images/ingredients/${safe}.png`;
+};
+
+// Ingredients Detail Info
+export const getIngredientsDetails = async (name: string): Promise<Ingredient | null> => {
+  const res = await fetch(`${BASE_URL}/search.php?i=${name}`);
+  if (!res.ok) throw new Error ("Failed to fetch ingredients details");
+
+  const data = await res.json();
+  return data.ingredients ? data.ingredients[0] : null;
+};
+
+// Get recipes by ingredients (detail page)
+export const getRecipesByIngredients = async (ingredient: string): Promise<RecipePreview[]> => {
+  const res = await fetch(`${BASE_URL}/filter.php?i=${ingredient}`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch ingredient recipes");
+  }
+  const data: { meals: RecipePreview[] | null } = await res.json();
+  return data.meals || [];
+}

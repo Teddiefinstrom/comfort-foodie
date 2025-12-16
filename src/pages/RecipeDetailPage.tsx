@@ -4,7 +4,6 @@ import { useQuery } from "@tanstack/react-query";
 import { getRecipeDetails } from "../service/mealDB";
 import Loader from "../components/ErrorHandling/Loader";
 import toast from "react-hot-toast";
-import { useState } from "react";
 
 const RecipeDetailPage = () => {
   const { id } = useParams();

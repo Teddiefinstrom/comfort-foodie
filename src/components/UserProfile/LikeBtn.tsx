@@ -34,7 +34,7 @@ const LikeBtn = ({ recipe }: { recipe: RecipeLikeData }) => {
     setShowSaveOptions(false);
   };
 
-  const handleRemove = async () => {
+  const handleRemove = async () => { 
     if (!currentUser) return;
 
     await removeRecipe(currentUser.uid, recipe.idMeal);

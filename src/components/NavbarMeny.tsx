@@ -39,8 +39,8 @@ function NavbarMeny() {
               <Nav.Link as={Link} to="/recipes">
                 Recipes
               </Nav.Link>
-              <Nav.Link as={Link} to="/ingrediens">
-                Ingrediens
+              <Nav.Link as={Link} to="/ingredients">
+              Ingredients
               </Nav.Link>
               <Nav.Link as={Link} to="/about">
                 About
