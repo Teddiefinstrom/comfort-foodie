@@ -20,6 +20,7 @@ const Carousel = ({
             <div className="img-wrapper">
               <Link to={`/recipe/${recipe.idMeal}`}>
                 <Card.Img
+                className="car-recipe-img"
                   variant="top"
                   src={
                     recipe.strMealThumb ||

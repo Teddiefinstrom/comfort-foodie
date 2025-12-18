@@ -23,59 +23,46 @@ const RecipeDetailCard = ({ recipe }: { recipe: RecipeFull }) => {
 
   return (
     <Card className="recipe-detail-card">
-      <div className="detail-layout">
-        <div className="left-section">
-          <div className="detail-img-wrapper">
-            <Card.Img
-              variant="top"
-              src={recipe.strMealThumb}
-              className="detail-img"
-            />
+  <Card.Body>
+    <Card.Title as="h1" className="recipe-title">
+      {recipe.strMeal}
+    </Card.Title>
 
-            <LikeBtn
-              recipe={{
-                idMeal: recipe.idMeal,
-                title: recipe.strMeal,
-                image: recipe.strMealThumb,
-              }}
-            />
-          </div>
-          <Card.Body>
-            <Card.Title>{recipe.strMeal}</Card.Title>
+    <Card.Text className="recipe-meta text-muted">
+      {recipe.strCategory && <span>{recipe.strCategory}</span>}
+      {recipe.strArea && <span> · {recipe.strArea}</span>}
+    </Card.Text>
+  </Card.Body>
 
-            {recipe.strCategory && (
-              <Card.Text>
-                <strong>Category:</strong> {recipe.strCategory}
-              </Card.Text>
-            )}
+  <Card.Body className="recipe-main">
+    <div className="recipe-media">
+      <Card.Img
+        src={recipe.strMealThumb}
+        className="detail-img"
+        alt={recipe.strMeal}
+      />
+    </div>
 
-            {recipe.strArea && (
-              <Card.Text>
-                <strong>Origin:</strong> {recipe.strArea}
-              </Card.Text>
-            )}
-          </Card.Body>
+    <div className="recipe-ingredients">
+      <h3>Ingredients</h3>
+      <ul>
+        {ingredients.map((item, index) => (
+          <li key={index}>
+            {item.measure} {item.ingredient}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </Card.Body>
 
-          <div className="ingredients-box">
-            <h4>Ingredients</h4>
-            <ul>
-              {ingredients.map((item, index) => (
-                <li key={index}>
-                  {item.measure} {item.ingredient}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+  <Card.Body className="recipe-instructions">
+    <h3>Instructions</h3>
+    {steps?.map((step, index) => (
+      <p key={index}>{step}</p>
+    ))}
+  </Card.Body>
+</Card>
 
-        <div className="right-section">
-          <h3>Instructions</h3>
-          {steps?.map((step, index) => (
-            <p key={index}>{step}</p>
-          ))}
-        </div>
-      </div>
-    </Card>
   );
 };
 

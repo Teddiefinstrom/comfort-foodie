@@ -21,6 +21,9 @@
 @import 'components/filterSearch';
 @import 'components/recipeDetailCard';
 @import 'components/collageList';
+@import 'components/likeBtn';
+@import 'components/searchBar';
+
 
 // Pages
 @import 'pages/homePage';
@@ -29,3 +32,4 @@
 @import 'pages/recipePage';
 @import 'pages/ingrediens';
 @import 'pages/recipeDetailPage';
+@import 'pages/ingredientDetailPage';

@@ -1,40 +1,40 @@
-// .home-hero {
-//     position: relative;
-//   background-image: url("/src/styling/images/loveiiii.jpg");
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   height: 70vh;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   text-align: center;
-//   margin-bottom: 0.5rem;
-//   color: #f6e7d8;
-// }
+.home-carousel {
+  margin-top: 2rem;
+}
+.intro-text-section {
+  background-color: $color-bg-2;
+  padding: 2rem 0 2.5rem;
+}
 
-// .home-hero::after {
-//     content: "";
-//     position: absolute;
-//     inset: 0;
-//     background: rgba(0, 0, 0, 0.2); /* justera mellan 0.2–0.5 */
-//     z-index: 1;
-//   }
+.intro-text {
+  max-width: 720px;
+  margin: 0 auto;
 
-// .hero-content {
-//     max-width: 700px;
-//   position: relative;
-//   z-index: 2;
-// }
+  padding: 0 1rem;
 
-// .hero-content h1 {
-//   margin-top: 1rem;
-//   text-align: center;
-//   font-size: 4rem;
-// }
+  font-size: 1.05rem;
+  line-height: 1.6;
+  text-align: center;
 
-// .hero-content p {
-//   font-size: 1.2rem;
-//   line-height: 1.6;
-//   font-weight: 300;
-// }
+  color: $color-text-primary;
+  font-style: italic;
+}
+
+@include tablet {
+  .intro-text {
+    font-size: 1.15rem;
+  }
+}
+
+@include laptop {
+  .intro-text {
+    font-size: 1.25rem;
+  }
+}
+
+@include desktop {
+    .intro-text {
+        max-width: 900px;
+      font-size: 1.35rem;
+    }
+  }

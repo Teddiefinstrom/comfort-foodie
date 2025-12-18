@@ -48,7 +48,7 @@ onCategorySelect(newValue);
         className="filter-main-btn"
         onClick={() => setOpenFilter(openFilter === "area" ? "" : "area")}
       >
-        Areas
+        Countries
       </Button>
 
 

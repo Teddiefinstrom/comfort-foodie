@@ -10,9 +10,12 @@ const HomePage = () => {
     "Vegetarian",
     "Chicken",
     "Dessert",
+    "Lamb",
+    "Pork",
+    "Seafood",
   ]);
 
-  const [sides, vegetarian, chicken, desserts] = data;
+  const [sides, vegetarian, chicken, desserts, lamb, pork, seafood] = data;
 
   if (isError) {
     console.error(error);
@@ -23,24 +26,29 @@ const HomePage = () => {
   return (
     <>
       <HeroBanner background="/src/styling/images/loveiiii.jpg">
-        <h1>Welcome to Comfort Foodie</h1>
-        <p>
-          Welcome to Comfort Foodie — a gentle, virtual cookbook made for anyone
-          who wants to create something good, nourishing, and calming.
-        </p>
+      <h1>Food that feels like home</h1>
       </HeroBanner>
+      <div className="intro-text-section">
+      <p className="intro-text">
+          A gentle, virtual cookbook made for anyone who wants to create
+          something good, nourishing, and calming.
+        </p>
+        </div>
 
       {isLoading ? (
         <Loader />
       ) : (
-<>
-      <div>
-        <Carousel title="Sides" recipes={sides || []} />
-        <Carousel title="Vegetarian" recipes={vegetarian || []} />
-        <Carousel title="Chicken" recipes={chicken || []} />
-        <Carousel title="Desserts" recipes={desserts || []} />
-      </div>
-      </>
+        <>
+          <div className="home-carousel">
+            <Carousel title="Sides" recipes={sides || []} />
+            <Carousel title="Vegetarian" recipes={vegetarian || []} />
+            <Carousel title="Chicken" recipes={chicken || []} />
+            <Carousel title="Lamb" recipes={lamb || []} />
+            <Carousel title="Pork" recipes={pork || []} />
+            <Carousel title="Seafood" recipes={seafood || []} />
+            <Carousel title="Desserts" recipes={desserts || []} />
+          </div>
+        </>
       )}
     </>
   );

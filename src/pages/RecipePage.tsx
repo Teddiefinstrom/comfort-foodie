@@ -21,10 +21,7 @@ const RecipePage = () => {
     isError: filterError,
   } = useRecipeFilters();
 
-  const previewsQuery = useRecipePreviews(
-    selectedCategory,
-    selectedArea,
-  );
+  const previewsQuery = useRecipePreviews(selectedCategory, selectedArea);
 
   const previews = previewsQuery.data || [];
 
@@ -47,15 +44,16 @@ const RecipePage = () => {
   return (
     <>
       <HeroBanner background="/src/styling/images/bbbff.jpg">
-        <h1>Recipes</h1>
-        <SearchBar onSearch={setSearchQuery} />
+        <h1>Find recipes worth returning to</h1>
       </HeroBanner>
 
       {filtersLoading || previewsQuery.isLoading ? (
         <Loader />
       ) : (
         <>
-          <div>
+          <div className="control-section">
+            <SearchBar onSearch={setSearchQuery} />
+
             <FilterSearch
               categories={categories}
               areas={areas}

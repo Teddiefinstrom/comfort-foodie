@@ -43,27 +43,29 @@ const IngredientsPage = () => {
   );
 
   const itemsToShow = activeLetter ? filterByLetter : visibleItems;
-  const totalItems = activeLetter ? filterByLetter.length : sortedIngredients.length;
+  const totalItems = activeLetter
+    ? filterByLetter.length
+    : sortedIngredients.length;
 
   return (
     <>
       <HeroBanner background="/src/styling/images/ingrediens.jpg">
-        <h1>Ingredient Library</h1>
+        <h1>Get to know your ingredients</h1>
       </HeroBanner>
+
+      <p className="letter-nav-label">Browse by letter</p>
 
       <div className="letter-nav">
         <Button
-          variant="warning"
           onClick={() => setActiveLetter(null)}
-          className={!activeLetter ? "active" : ""}
+          className={`all-letter-btn ${!activeLetter ? "active" : ""}`}
         >
           All
         </Button>
         {ALPHABET.map((letter) => (
           <Button
-            variant="warning"
             key={letter}
-            className={activeLetter === letter ? "active" : ""}
+            className={`letter-btn ${activeLetter === letter ? "active" : ""}`}
             onClick={() => setActiveLetter(letter)}
           >
             {letter}
@@ -102,10 +104,7 @@ const IngredientsPage = () => {
           )}
           {!isLoadingMore &&
             !activeLetter &&
-            visibleItems.length >= totalItems && (
-              <p>End of ingredients</p>
-            )}
-
+            visibleItems.length >= totalItems && <p>End of ingredients</p>}
         </div>
       )}
     </>

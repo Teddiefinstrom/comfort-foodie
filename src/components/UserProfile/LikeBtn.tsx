@@ -6,10 +6,12 @@ import {
   isSaved,
 } from "../../service/savedRecipes.service";
 import type { RecipeLikeData } from "../../types/recipe";
-import Button from "react-bootstrap/esm/Button";
 import toast from "react-hot-toast";
 import AddToCollageModal from "../AddToCollageModal";
 import SaveOptionsModal from "../SaveOptionsModal";
+import heartEmpty from "../../styling/images/like-recipe.webp";
+import heartFull from "../../styling/images/liked-heart-icon.png";
+
 
 const LikeBtn = ({ recipe }: { recipe: RecipeLikeData }) => {
   const { currentUser } = useAuth();
@@ -34,7 +36,7 @@ const LikeBtn = ({ recipe }: { recipe: RecipeLikeData }) => {
     setShowSaveOptions(false);
   };
 
-  const handleRemove = async () => { 
+  const handleRemove = async () => {
     if (!currentUser) return;
 
     await removeRecipe(currentUser.uid, recipe.idMeal);
@@ -55,8 +57,8 @@ const LikeBtn = ({ recipe }: { recipe: RecipeLikeData }) => {
 
   return (
     <>
-      <Button
-        variant="outline-warning"
+      <button
+        className="like-heart-btn"
         onClick={() => {
           if (!currentUser) {
             toast.error("Log in to save recipes ❤️");
@@ -70,8 +72,11 @@ const LikeBtn = ({ recipe }: { recipe: RecipeLikeData }) => {
           setShowSaveOptions(true);
         }}
       >
-        {saved ? "Remove" : "Save"}
-      </Button>
+
+        <img src={saved ? heartFull : heartEmpty}
+        alt={saved ? "Remove" : "Save"}
+        />
+      </button>
 
       <SaveOptionsModal
         show={showSaveOptions}
