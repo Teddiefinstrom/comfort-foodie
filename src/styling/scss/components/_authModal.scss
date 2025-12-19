@@ -1,0 +1,72 @@
+.auth-modal {
+  .modal-content {
+    background-color: $color-bg; 
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  .modal-header {
+    border: none; 
+  }
+
+  .modal-title {
+    color: $color-text-primary;
+    font-weight: 600;
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+    padding-top: 0.5rem;
+   
+  }
+
+  .modal-btn-footer {
+    display: flex;
+    gap: 1rem;
+    margin-left: 0;
+  }
+
+  .form-label {
+    color: $color-text-secondary;
+  }
+
+  .form-control {
+    border-radius: 8px;
+    border: 1px solid $color-icon;
+  }
+
+  .form-text {
+    color: $color-text-primary;
+    margin-left: 0;
+  }
+
+  .btn-primary {
+    background-color: $color-green;
+    border: none;
+
+    &:hover {
+      background-color: $color-green-hover;
+    }
+  }
+
+  .error-message {
+    background: #fdd;
+    color: #a00;
+    padding: 0.5rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+}
+
+.switch-link {
+    cursor: pointer;
+  
+    &:hover {
+      color: $color-orange-hover;
+      text-decoration: underline;
+    }
+  }
+  

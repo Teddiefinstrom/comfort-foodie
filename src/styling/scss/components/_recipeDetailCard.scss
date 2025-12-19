@@ -1,0 +1,21 @@
+.recipe-detail-card {
+  max-width: 900px;
+  margin: 2rem auto;
+  border: none;
+  background-color: $color-bg-2;
+}
+
+.detail-img {
+  border-radius: 16px 16px 0 0;
+}
+
+.ingredient-list {
+  padding-left: 1rem;
+  line-height: 1.6;
+}
+
+@include tablet {
+  .recipe-detail-card {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,36 @@
+.recipe-card {
+  width: 20rem;
+  border: none;
+  background: transparent;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0;
+  }
+}
+
+.recipe-card-title {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  font-weight: 600;
+
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+

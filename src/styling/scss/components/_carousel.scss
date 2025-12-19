@@ -1,0 +1,108 @@
+.carousel-swiper {
+  margin-left: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .card {
+    width: 12rem;
+    min-width: 12rem;
+    border: none;
+    background: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    .img-wrapper .car-recipe-img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 0.7rem 0.8rem;
+
+      .card-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+    }
+
+    .recipe-title-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  @include tablet {
+    .card {
+      width: 13.5rem;
+      min-width: 13.5rem;
+
+      .img-wrapper .car-recipe-img {
+        height: 10rem;
+      }
+
+      .card-body .card-title {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @include laptop {
+    .card {
+      width: 15rem;
+      min-width: 15rem;
+
+      .img-wrapper .car-recipe-img {
+        height: 11rem;
+      }
+    }
+  }
+
+  @include desktop {
+    .card {
+      width: 16.5rem;
+      min-width: 16.5rem;
+
+      .img-wrapper .car-recipe-img {
+        height: 12rem;
+      }
+
+      .card-body .card-title {
+        font-size: 1.05rem;
+      }
+    }
+  }
+}
+
+.carousel-header {
+  margin: 0.5rem 0 0.5rem 1rem;
+  text-align: start;
+  font-weight: 600;
+}

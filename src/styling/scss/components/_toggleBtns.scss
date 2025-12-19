@@ -1,0 +1,15 @@
+.toggle-tabs {
+
+    margin: 2rem;
+    
+    .nav-link {
+        color: $color-text-primary;
+        font-weight: 500;
+      }
+      
+     .nav-link.active {
+        color: $color-text-primary;
+      }
+      
+}
+

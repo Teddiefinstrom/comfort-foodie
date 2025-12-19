@@ -1,0 +1,81 @@
+.navbar {
+  background-color: $color-bg-2;
+  padding: 0.8rem 1rem;
+
+  .navbar-brand {
+    color: $color-text-primary;
+    font-weight: 500;
+    font-size: 1.6rem;
+  }
+
+  .nav-link {
+    color: $color-text-primary;
+    font-size: 1.05rem;
+    font-weight: 500;
+
+    &:hover {
+      color:$color-orange-hover;
+    }
+  }
+
+  .nav-avatar {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.nav-btns {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.nav-btns .btn {
+  padding: 0.35rem 0.8rem;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+@include tablet {
+  .navbar {
+    .navbar-brand {
+      font-size: 1.8rem;
+    }
+
+    .nav-link {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .nav-profile-dropdown {
+    margin-top: 0.8rem; 
+  }
+
+  .nav-btns {
+    margin-top: 0.8rem; 
+  }
+}
+
+
+@include laptop {
+  .navbar {
+    padding: 1rem 1.2rem;
+
+    .navbar-brand {
+      font-size: 2rem;
+    }
+
+    .nav-link {
+      font-size: 1.2rem;
+    }
+  }
+
+  .nav-btns .btn {
+    padding: 0.5rem 1.1rem;
+    font-size: 1rem;
+  }
+}

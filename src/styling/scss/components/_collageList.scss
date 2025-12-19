@@ -1,0 +1,30 @@
+.collage-list {
+
+.collage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.collage-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  }
+  
+  .collage-card {
+    background: #fff7e1;
+    padding: 1rem;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    transition: 0.2s;
+  
+    &:hover {
+      background: #ffe8b0;
+    }
+  }
+
+}

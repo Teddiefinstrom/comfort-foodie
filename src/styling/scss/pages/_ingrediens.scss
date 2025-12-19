@@ -1,0 +1,91 @@
+.letter-nav-label {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 0.5rem;
+}
+
+.letter-nav {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0rem 1rem 0.5rem;
+
+  overflow-x: auto;
+  scrollbar-width: none;
+  justify-content: flex-start;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.letter-btn, .all-letter-btn {
+  min-width: 2.2rem;
+  padding: 0.35rem 0.5rem;
+
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  background: transparent !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  color: $color-text-primary !important;
+
+  border-radius: 999px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04) !important;
+  }
+
+  &.active {
+    background: $color-orange !important;
+    border-color: $color-orange !important;
+    color: $color-text-primary !important;
+  }
+}
+
+@include tablet {
+  .letter-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+
+@include laptop {
+  .letter-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+.ingredients-page {
+  .ingredients-grid {
+    padding: 2rem;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .ingredient-card {
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      background: transparent;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+  }
+}

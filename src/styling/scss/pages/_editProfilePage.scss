@@ -1,0 +1,48 @@
+.edit-profile {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+  .profile-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .profile-avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    .btn-upload {
+      margin-top: 0.5rem;
+    }
+  }
+
+  form {
+    width: 100%;
+    max-width: 350px;
+
+    label {
+      font-weight: 600;
+    }
+
+    .form-control {
+      border-radius: 8px;
+    }
+
+    .btn-login {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  .btn-delete {
+    width: 100%;
+    margin-top: 1rem;  
+  }
+}

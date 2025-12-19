@@ -1,0 +1,40 @@
+.home-carousel {
+  margin-top: 2rem;
+}
+.intro-text-section {
+  background-color: $color-bg-2;
+  padding: 2rem 0 2.5rem;
+}
+
+.intro-text {
+  max-width: 720px;
+  margin: 0 auto;
+
+  padding: 0 1rem;
+
+  font-size: 1.05rem;
+  line-height: 1.6;
+  text-align: center;
+
+  color: $color-text-primary;
+  font-style: italic;
+}
+
+@include tablet {
+  .intro-text {
+    font-size: 1.15rem;
+  }
+}
+
+@include laptop {
+  .intro-text {
+    font-size: 1.25rem;
+  }
+}
+
+@include desktop {
+    .intro-text {
+        max-width: 900px;
+      font-size: 1.35rem;
+    }
+  }
