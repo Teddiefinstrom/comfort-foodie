@@ -1,26 +1,42 @@
-
 .profile-card {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
 
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
+  .card {
+    border: none;
+    background: transparent;
 
-    .card {
-        border: none;
-        background: transparent; 
-    
-        .card-body {
-            text-align: center;
+    .card-body {
+      text-align: center;
+    }
 
-        }
+    .avatar-pic {
+      width: 160px;
+      height: 160px;
 
-        .card-title {
-          font-size: 1.3rem;
-          font-weight: 600;
-        }
-    
-        .card-text {
-          font-size: 0.95rem;
-        }
+      object-fit: cover;
+      border-radius: 50%;
+
+      display: block;
+      margin: 0 auto 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    @include tablet {
+      .avatar-pic {
+        width: 200px;
+        height: 200px;
       }
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+    }
+  }
 }

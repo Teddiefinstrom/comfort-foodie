@@ -120,7 +120,7 @@ const RegisterModal = ({
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="signupConfirmPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Confirm Password</Form.Label>
               <Form.Control
                 type="password"
                 placeholder="Confirm Password"

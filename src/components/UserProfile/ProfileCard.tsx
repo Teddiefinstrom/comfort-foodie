@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap/Image";
 import profilePic from "../../styling/images/cf-default-profile.png";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router";
@@ -13,10 +14,11 @@ const ProfileCard = () => {
     <>
       <div className="profile-card">
         <Card style={{ width: "18rem" }}>
-          <Card.Img
-            variant="top"
+          <img 
+          //roundedCircle
             src={currentUser?.photoURL || profilePic}
-            className="rounded-circle"
+            alt="profile"
+            className="avatar-pic"
           />
           <Card.Body>
             <Card.Title>

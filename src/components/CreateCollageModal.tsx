@@ -98,7 +98,7 @@ const CreateCollageModal = ({
               </Button>
 
               <Button variant="primary" type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Creating..." : "Create Collage"}
+                {isSubmitting ? "Creating..." : "Create"}
               </Button>
             </div>
           </Modal.Footer>

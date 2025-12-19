@@ -31,8 +31,8 @@ const UserRecipeList = () => {
 
   return (
     <>
-      <h2>Saved Recipes</h2>
-
+      <div className="recipe-page">
+      <div className="recipe-grid">
       {recipes.map((recipe) => (
           <RecipeCard
             key={recipe.idMeal}
@@ -41,6 +41,8 @@ const UserRecipeList = () => {
             strMealThumb={recipe.image}
           />
         ))}
+            </div>
+    </div>
     </>
   );
 };

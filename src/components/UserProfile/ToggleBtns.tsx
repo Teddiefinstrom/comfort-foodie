@@ -1,5 +1,6 @@
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
+import Nav from "react-bootstrap/esm/Nav";
 
 type ToggleBtnProps = {
   view: string;
@@ -9,25 +10,20 @@ type ToggleBtnProps = {
 const ToggleBtns = ({ view, setView }: ToggleBtnProps) => {
   return (
     <>
-      <ToggleButtonGroup
-        type="radio"
-        name="toggle-btns"
-        value={view}
-        onChange={(val) => setView(val)}
-        className="mb-3"
-      >
-        <ToggleButton id="tbg-recept" value="recipes" variant="outline-warning">
-          Saved Recipes
-        </ToggleButton>
+      <Nav
+      variant="underline"
+      activeKey={view}
+      onSelect={(selectedKey) => setView(selectedKey!)}
+      className="justify-content-center mb-3 toggle-tabs"
+    >
+      <Nav.Item>
+        <Nav.Link eventKey="recipes">Saved Recipes</Nav.Link>
+      </Nav.Item>
 
-        <ToggleButton
-          id="tbg-collages"
-          value="collages"
-          variant="outline-warning"
-        >
-          My Collages
-        </ToggleButton>
-      </ToggleButtonGroup>
+      <Nav.Item>
+        <Nav.Link eventKey="collages">My Collages</Nav.Link>
+      </Nav.Item>
+    </Nav>
     </>
   );
 };

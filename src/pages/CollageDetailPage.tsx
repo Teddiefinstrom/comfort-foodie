@@ -40,33 +40,29 @@ const CollageDetailPage = () => {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div className="collage-detail-page">
-      <h2>Collage</h2>
+    <div className="recipe-page collage-detail-page">
+      <div className="recipe-grid">
+        {recipes.map((r) => (
+          <div key={r.idMeal} className="recipe-card collage-recipe-card">
+            <button
+              className="remove-recipe-btn"
+              onClick={() => handleRemove(r.idMeal)}
+              aria-label="Remove recipe"
+            >
+              ❌
+            </button>
 
-      {recipes.length === 0 ? (
-        <p>This collage has no recipes yet</p>
-      ) : (
-        <div>
-          {recipes.map((r) => (
-            <Card key={r.idMeal} style={{ width: "12rem" }}>
-              <Link to={`/recipe/${r.idMeal}`}>
-                <Card.Img src={r.image || "/placeholder.png"} />
+            <Link to={`/recipe/${r.idMeal}`}>
+              <img src={r.image || "/placeholder.png"} alt={r.title} />
+            </Link>
+            <div className="recipe-card-body">
+              <Link to={`/recipe/${r.idMeal}`} className="recipe-card-title">
+                {r.title}
               </Link>
-
-              <Card.Body>
-                <Card.Title>{r.title}</Card.Title>
-
-                <Button
-                  variant="outline-danger"
-                  onClick={() => handleRemove(r.idMeal)}
-                >
-                  Remove
-                </Button>
-              </Card.Body>
-            </Card>
-          ))}
-        </div>
-      )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

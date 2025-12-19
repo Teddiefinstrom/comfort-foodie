@@ -120,7 +120,7 @@ const LoginModal = ({ show, onClose, switchToRegister }: LoginModalProps) => {
                   Close
                 </Button>
                 <Button variant="primary" type="submit" disabled={isSubmitting}>
-                  {isSubmitting ? "Loggin in.." : "Login"}
+                  {isSubmitting ? "Loading" : "Login"}
                 </Button>
               </div>
             </Modal.Footer>

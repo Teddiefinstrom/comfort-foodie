@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import type { Collage } from "../../types/recipe";
 import { getCollages } from "../../service/collages.service";
-import Button from "react-bootstrap/esm/Button";
 import { Link } from "react-router";
 import CreateCollageModal from "../CreateCollageModal";
 
@@ -28,41 +27,36 @@ const UserCollageList = () => {
   if (loading) return <p>Loading Collages...</p>;
 
   return (
-    <>
-      <div className="collage-list">
-        <div className="collage-header">
-          <h2>Collages</h2>
-
-          <Button variant="warning" onClick={() => setShowModal(true)}>
-            Create new Collage
-          </Button>
-        </div>
-
-        <CreateCollageModal 
-        show={showModal} 
+    <div className="collage-page">
+      <CreateCollageModal
+        show={showModal}
         onClose={() => setShowModal(false)}
         onCreated={() => {
-            getCollages(currentUser.uid).then(setCollages);
+          getCollages(currentUser.uid).then(setCollages);
         }}
-        />
+      />
 
-        {collages.length === 0 ? (
-          <p>You haven't created any collages yet.</p>
-        ) : (
-          <div className="collage-grid">
-            {collages.map((c) => (
-              <Link
-                key={c.id}
-                to={`/collages/${c.id}`}
-                className="collage-card"
-              >
-                <h4>{c.title}</h4>
-              </Link>
-            ))}
-          </div>
-        )}
+      {collages.length === 0 ? (
+        <p className="empty-state">You haven’t created any collages yet.</p>
+      ) : (
+        <div className="collage-grid">
+          {collages.map((c) => (
+            <Link key={c.id} to={`/collages/${c.id}`} className="collage-card">
+              <h4>{c.title}</h4>
+            </Link>
+          ))}
+        </div>
+      )}
+
+      <div className="collage-cta">
+        <button
+          className="create-collage-btn"
+          onClick={() => setShowModal(true)}
+        >
+          Create new collage
+        </button>
       </div>
-    </>
+    </div>
   );
 };
 

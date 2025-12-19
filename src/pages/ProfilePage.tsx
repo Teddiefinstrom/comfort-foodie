@@ -6,12 +6,14 @@ const ProfilePage = () => {
 
   return (
     <>
+    <div className="profile-page">
       <h1>
         {currentUser?.displayName
           ? `Welcome ${currentUser?.displayName}!`
           : `Welcome chef!`}
       </h1>
       <ProfileCard />
+      </div>
     </>
   );
 };

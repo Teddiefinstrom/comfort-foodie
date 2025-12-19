@@ -1,6 +1,5 @@
 import Card from "react-bootstrap/Card";
 import type { RecipeFull } from "../types/recipe";
-import LikeBtn from "./UserProfile/LikeBtn";
 
 const RecipeDetailCard = ({ recipe }: { recipe: RecipeFull }) => {
   const ingredients: { ingredient: string; measure: string }[] = [];

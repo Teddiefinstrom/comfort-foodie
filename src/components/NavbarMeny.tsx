@@ -30,30 +30,29 @@ function NavbarMeny() {
 
       <Navbar collapseOnSelect expand="lg" className="navbar">
         <Container>
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Brand as={Link} to="/" className="me-lg-auto">
             Comfort Foodie
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="mx-lg-auto gap-3">
               <Nav.Link as={Link} to="/recipes">
                 Recipes
               </Nav.Link>
               <Nav.Link as={Link} to="/ingredients">
-              Ingredients
+                Ingredients
               </Nav.Link>
               <Nav.Link as={Link} to="/about">
                 About
               </Nav.Link>
               {currentUser && (
-  <Nav.Link as={Link} to="/profile/recipes">
-    Saved Recipes
-  </Nav.Link>
-)}
-
+                <Nav.Link as={Link} to="/profile/recipes">
+                  Saved Recipes
+                </Nav.Link>
+              )}
             </Nav>
             {!currentUser ? (
-              <Nav className="nav-btns">
+              <Nav className="ms-lg-auto nav-btns gap-2">
                 <Button
                   className="btn-register"
                   variant="outline-dark"
@@ -71,9 +70,10 @@ function NavbarMeny() {
                 </Button>
               </Nav>
             ) : (
-              <Nav>
+              <Nav className="ms-lg-auto">
                 <NavDropdown
-                align="end"
+                  align="end"
+                  className="nav-profile-dropdown"
                   title={
                     <img
                       src={currentUser?.photoURL || profilePic}
