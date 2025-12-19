@@ -1,6 +1,5 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Image from "react-bootstrap/Image";
 import profilePic from "../../styling/images/cf-default-profile.png";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router";

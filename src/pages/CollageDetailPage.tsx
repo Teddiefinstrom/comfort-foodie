@@ -7,8 +7,6 @@ import {
   removeRecipeFromCollage,
 } from "../service/collages.service";
 import toast from "react-hot-toast";
-import Card from "react-bootstrap/esm/Card";
-import Button from "react-bootstrap/esm/Button";
 
 const CollageDetailPage = () => {
   const { currentUser } = useAuth();

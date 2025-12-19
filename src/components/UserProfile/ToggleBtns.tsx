@@ -1,5 +1,3 @@
-import ToggleButton from "react-bootstrap/ToggleButton";
-import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import Nav from "react-bootstrap/esm/Nav";
 
 type ToggleBtnProps = {

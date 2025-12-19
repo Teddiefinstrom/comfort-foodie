@@ -16,7 +16,6 @@ const IngredientsPage = () => {
   const {
     data: ingredients,
     isLoading,
-    isError,
   } = useQuery<Ingredient[]>({
     queryKey: ["ingredients"],
     queryFn: getIngredients,

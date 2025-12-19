@@ -32,7 +32,7 @@ const EditProfilePage = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    //formState: { errors },
   } = useForm<EditProfileForm>({
     defaultValues: {
       displayName: currentUser?.displayName || username,
