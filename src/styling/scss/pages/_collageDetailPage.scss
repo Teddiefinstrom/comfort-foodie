@@ -2,6 +2,29 @@
   padding: 0 1rem 2.5rem;
 }
 
+.collage-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .collage-header h2 {
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .delete-collage-btn {
+    margin-top: 0.2rem;
+    display: block;
+    margin: 0.8rem auto 1.4rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 999px;
+  }  
+
 .collage-detail-page .recipe-grid {
   display: grid;
   grid-template-columns: 1fr;

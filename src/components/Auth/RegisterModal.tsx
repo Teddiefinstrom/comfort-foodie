@@ -57,6 +57,7 @@ const RegisterModal = ({
         photo: null,
       })
       reset();
+      onClose();
       navigate("/profile");
 
       toast.success("Your account has been created! 🎉");

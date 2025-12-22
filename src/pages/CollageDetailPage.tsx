@@ -1,26 +1,35 @@
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import type { RecipeLikeData } from "../types/recipe";
 import {
+  deleteCollage,
+  getCollageTitle,
   getRecipesInCollage,
   removeRecipeFromCollage,
 } from "../service/collages.service";
 import toast from "react-hot-toast";
 import Loader from "../components/ErrorHandling/Loader";
+import Button from "react-bootstrap/esm/Button";
 
 const CollageDetailPage = () => {
   const { currentUser } = useAuth();
   const { collageId } = useParams();
+  const navigate = useNavigate();
   const [recipes, setRecipes] = useState<RecipeLikeData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [collageTitle, setCollageTitle] = useState("");
 
   useEffect(() => {
     if (!currentUser || !collageId) return;
 
     const load = async () => {
       setLoading(true);
+
+      const title = await getCollageTitle(currentUser.uid, collageId);
       const data = await getRecipesInCollage(currentUser.uid, collageId);
+
+      setCollageTitle(title);
       setRecipes(data);
       setLoading(false);
     };
@@ -35,11 +44,37 @@ const CollageDetailPage = () => {
     toast.success("Recipe removed");
   };
 
+  const handleDeleteCollage = async () => {
+    if (!currentUser || !collageId) return;
+
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this collage? This action cannot be undone."
+    );
+
+    if (!confirmed) return;
+
+    await deleteCollage(currentUser.uid, collageId);
+    toast.success("Collage deleted");
+    navigate("/collages");
+  };
+
   if (!currentUser) return <p>You must be logged in.</p>;
   if (loading) return <Loader />;
 
   return (
     <div className="recipe-page collage-detail-page">
+      <div className="collage-header">
+        <h2>{collageTitle}</h2>
+
+        <Button
+          variant="danger"
+          className="delete-collage-btn"
+          onClick={handleDeleteCollage}
+        >
+          Delete collage
+        </Button>
+      </div>
+
       <div className="recipe-grid">
         {recipes.map((r) => (
           <div key={r.idMeal} className="recipe-card collage-recipe-card">
