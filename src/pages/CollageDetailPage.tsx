@@ -55,7 +55,7 @@ const CollageDetailPage = () => {
 
     await deleteCollage(currentUser.uid, collageId);
     toast.success("Collage deleted");
-    navigate("/collages");
+    navigate("/profile/recipes");
   };
 
   if (!currentUser) return <p>You must be logged in.</p>;

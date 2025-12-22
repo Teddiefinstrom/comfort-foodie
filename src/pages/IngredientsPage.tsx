@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import Button from "react-bootstrap/esm/Button";
 import useIngredients from "../hooks/useIngredients";
+import ingrediensimg from "../styling/images/ingrediens.jpg";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
@@ -40,7 +41,7 @@ const IngredientsPage = () => {
 
   return (
     <>
-      <HeroBanner background="/src/styling/images/ingrediens.jpg">
+      <HeroBanner background={ingrediensimg}>
         <h1>Get to know your ingredients</h1>
       </HeroBanner>
 
