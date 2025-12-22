@@ -30,12 +30,12 @@ function NavbarMeny() {
 
       <Navbar collapseOnSelect expand="lg" className="navbar">
         <Container>
-          <Navbar.Brand as={Link} to="/" className="me-lg-auto">
+          <Navbar.Brand as={Link} to="/">
             Comfort Foodie
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mx-lg-auto gap-3">
+            <Nav className="ms-lg-3 gap-3">
               <Nav.Link as={Link} to="/recipes">
                 Recipes
               </Nav.Link>

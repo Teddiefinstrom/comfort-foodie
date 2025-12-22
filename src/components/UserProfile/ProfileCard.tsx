@@ -14,7 +14,6 @@ const ProfileCard = () => {
       <div className="profile-card">
         <Card style={{ width: "18rem" }}>
           <img 
-          //roundedCircle
             src={currentUser?.photoURL || profilePic}
             alt="profile"
             className="avatar-pic"

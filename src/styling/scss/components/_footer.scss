@@ -1,8 +1,17 @@
-.footer {
-    background-color: $color-bg-2; 
-    padding: 2.5rem 2rem;
-    margin-top: 3rem;
-  
+.app-footer {
+  margin-top: auto;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  background-color: $color-bg-2;
+  color: $color-text-secondary;
+  font-size: 0.85rem;
 
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  .footer-source {
+    font-size: 0.75rem;
+    opacity: 0.8;
   }
-  
+}

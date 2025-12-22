@@ -10,10 +10,9 @@ interface SaveOptionsModalProps {
 
 const SaveOptionsModal = ({show, onClose, onSaveOnly, onAddToCollage}: SaveOptionsModalProps) => {
 
-
     return (
         <>
-        <Modal show={show} onHide={onClose} centered>
+        <Modal show={show} onHide={onClose} centered className="auth-modal save-options-modal">
       <Modal.Header closeButton>
         <Modal.Title>Save Recipe</Modal.Title>
       </Modal.Header>
@@ -23,7 +22,7 @@ const SaveOptionsModal = ({show, onClose, onSaveOnly, onAddToCollage}: SaveOptio
       </Modal.Body>
 
       <Modal.Footer>
-
+      <div className="modal-btn-footer">
         <Button variant="secondary" onClick={onClose}>
           Cancel
         </Button>
@@ -35,7 +34,7 @@ const SaveOptionsModal = ({show, onClose, onSaveOnly, onAddToCollage}: SaveOptio
         <Button variant="primary" onClick={onAddToCollage}>
           Add to collage
         </Button>
-
+      </div>
       </Modal.Footer>
     </Modal>
         </>

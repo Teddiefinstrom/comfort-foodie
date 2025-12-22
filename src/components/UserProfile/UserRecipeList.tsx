@@ -26,23 +26,23 @@ const UserRecipeList = () => {
   if (loading) return <Loader />;
 
   if (recipes.length === 0) {
-    return <p> You have not saved any recipes yet...</p>
+    return <p className="empty-state">You haven’t saved any recipes yet.</p>;
   }
 
   return (
     <>
       <div className="recipe-page">
-      <div className="recipe-grid">
-      {recipes.map((recipe) => (
-          <RecipeCard
-            key={recipe.idMeal}
-            idMeal={recipe.idMeal}
-            strMeal={recipe.title}
-            strMealThumb={recipe.image}
-          />
-        ))}
-            </div>
-    </div>
+        <div className="recipe-grid">
+          {recipes.map((recipe) => (
+            <RecipeCard
+              key={recipe.idMeal}
+              idMeal={recipe.idMeal}
+              strMeal={recipe.title}
+              strMealThumb={recipe.image}
+            />
+          ))}
+        </div>
+      </div>
     </>
   );
 };

@@ -7,6 +7,7 @@ import {
   removeRecipeFromCollage,
 } from "../service/collages.service";
 import toast from "react-hot-toast";
+import Loader from "../components/ErrorHandling/Loader";
 
 const CollageDetailPage = () => {
   const { currentUser } = useAuth();
@@ -35,7 +36,7 @@ const CollageDetailPage = () => {
   };
 
   if (!currentUser) return <p>You must be logged in.</p>;
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
 
   return (
     <div className="recipe-page collage-detail-page">

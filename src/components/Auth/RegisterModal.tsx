@@ -53,7 +53,6 @@ const RegisterModal = ({
 
       await setDoc(doc(userCol, uid), {
         id: uid,
-        //name: data.email,
         email: data.email,
         photo: null,
       })

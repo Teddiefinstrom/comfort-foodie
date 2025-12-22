@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router";
+import { Toaster } from "react-hot-toast";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
-import { Toaster } from "react-hot-toast";
 import ProtectedRoutes from "./components/Auth/ProtectedRoutes";
 import RecipePage from "./pages/RecipePage";
-import IngredientsPage from "./pages/IngrediensPage";
+import IngredientsPage from "./pages/IngredientsPage";
 import AboutPage from "./pages/AboutPage";
 import NavbarMeny from "./components/NavbarMeny";
 import EditProfilePage from "./pages/EditProfilePage";
@@ -18,6 +18,7 @@ import IngredientDetailPage from "./pages/IngredientDetailPage";
 function App() {
   return (
     <>
+    <div className="app-wrapper">
       <NavbarMeny />
       <Toaster position="top-right" toastOptions={{ duration: 5000 }} />
       <Routes>
@@ -29,7 +30,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<ErrorPage />} />
 
-        {/*ProtectedRoutes */}
+        {/* ProtectedRoutes */}
         <Route element={<ProtectedRoutes />}>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/profile/edit" element={<EditProfilePage />} />
@@ -38,6 +39,7 @@ function App() {
         </Route>
       </Routes>
       <Footer />
+      </div>
     </>
   );
 }

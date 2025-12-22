@@ -7,7 +7,7 @@ const useInfiniteScroll = (items: any[], step = 20) => {
 
     useEffect(() => {
         setVisibleCount(step);
-      }, [items, step]);
+      }, [items.length, step]);
 
       useEffect(() => {
         if (!loadMoreRef.current) return;
@@ -27,7 +27,7 @@ const useInfiniteScroll = (items: any[], step = 20) => {
     
         observer.observe(loadMoreRef.current);
         return () => observer.disconnect();
-      }, [items, visibleCount, step]);
+      }, [items.length, visibleCount, step]);
     
 
     return {

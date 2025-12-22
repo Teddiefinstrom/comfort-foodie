@@ -1,21 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router";
 import {
-  getIngredients,
   getIngredientsThumb,
   getRecipesByIngredients,
 } from "../service/mealDB";
 import Loader from "../components/ErrorHandling/Loader";
 import Carousel from "../components/Carousel";
+import useIngredients from "../hooks/useIngredients";
 
 const IngredientDetailPage = () => {
   const { name } = useParams();
   const decodedName = decodeURIComponent(name!);
-
-  const { data: allIngredients, isLoading: loadingIngredients } = useQuery({
-    queryKey: ["ingredients"],
-    queryFn: getIngredients,
-  });
+  const { data: allIngredients, isLoading: loadingIngredients } =
+    useIngredients();
 
   const ingredient = allIngredients?.find(
     (i) => i.strIngredient.toLowerCase() === decodedName.toLowerCase()

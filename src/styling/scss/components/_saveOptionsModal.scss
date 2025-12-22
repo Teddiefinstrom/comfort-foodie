@@ -1,0 +1,49 @@
+.save-options-modal {
+    .modal-header {
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      border: none;
+  
+      .btn-close {
+        position: absolute;
+        right: 0;
+      }
+    }
+  
+    .modal-title {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .modal-body {
+      text-align: center;
+  
+      p {
+        color: $color-text-secondary;
+        margin-bottom: 0;
+      }
+    }
+  
+    .modal-footer {
+      justify-content: center;
+      padding-left: 0;
+    }
+  
+    .modal-btn-footer {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      width: 100%;
+    }
+  
+    .btn-warning {
+      background-color: $color-orange;
+      border: none;
+  
+      &:hover {
+        background-color: $color-orange-hover;
+      }
+    }
+  }
+  
