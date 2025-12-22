@@ -1,15 +1,18 @@
-
 .about-page {
-
-
-    h1 {
-        text-align: center;
-        margin-top: 2rem;
-    }
-
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  
     p {
-        text-align: center;
-        margin: 1rem 2rem;
-        font-size: 1.3rem;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: $color-text-primary;
+  
+      letter-spacing: 0.01em;
     }
-}
+  }
+  

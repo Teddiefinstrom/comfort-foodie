@@ -1,25 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
 import HeroBanner from "../components/HeroBanner";
-import type { Ingredient } from "../types/recipe";
-import { getIngredients, getIngredientsThumb } from "../service/mealDB";
+import { getIngredientsThumb } from "../service/mealDB";
 import Loader from "../components/ErrorHandling/Loader";
 import { Link } from "react-router";
 import { useMemo, useState } from "react";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import Button from "react-bootstrap/esm/Button";
+import useIngredients from "../hooks/useIngredients";
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 const IngredientsPage = () => {
   const [activeLetter, setActiveLetter] = useState<null | string>(null);
-
-  const {
-    data: ingredients,
-    isLoading,
-  } = useQuery<Ingredient[]>({
-    queryKey: ["ingredients"],
-    queryFn: getIngredients,
-  });
+  const { data: ingredients, isLoading } = useIngredients();
 
   const sortedIngredients = useMemo(() => {
     if (!ingredients) return [];

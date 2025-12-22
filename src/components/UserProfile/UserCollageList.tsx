@@ -4,6 +4,7 @@ import type { Collage } from "../../types/recipe";
 import { getCollages } from "../../service/collages.service";
 import { Link } from "react-router";
 import CreateCollageModal from "../CreateCollageModal";
+import Loader from "../ErrorHandling/Loader";
 
 const UserCollageList = () => {
   const { currentUser } = useAuth();
@@ -24,7 +25,7 @@ const UserCollageList = () => {
 
   if (!currentUser) return <p>You must be logged in.</p>;
 
-  if (loading) return <p>Loading Collages...</p>;
+  if (loading) return <Loader />;
 
   return (
     <div className="collage-page">

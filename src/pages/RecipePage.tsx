@@ -8,11 +8,14 @@ import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import toast from "react-hot-toast";
 import Loader from "../components/ErrorHandling/Loader";
 import HeroBanner from "../components/HeroBanner";
+import recipepageimg from "../styling/images/recipepage.jpg";
+import Button from "react-bootstrap/esm/Button";
 
 const RecipePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedArea, setSelectedArea] = useState("");
+  const hasActiveFilters = searchQuery || selectedCategory || selectedArea;
 
   const {
     categories,
@@ -23,17 +26,24 @@ const RecipePage = () => {
 
   const previewsQuery = useRecipePreviews(selectedCategory, selectedArea);
 
-  const previews = previewsQuery.data || [];
 
   const filteredRecipes = useMemo(() => {
+    const list = previewsQuery.data ?? [];
+  
     return searchQuery.trim()
-      ? previews.filter((recipe) =>
-          recipe.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
+      ? list.filter((recipe) =>
+      recipe.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
         )
-      : previews;
-  }, [previews, searchQuery]);
+      : list;
+  }, [previewsQuery.data, searchQuery]);
+  
+  const infiniteScrollKey =
+  `${searchQuery}-${selectedCategory}-${selectedArea}`;
 
-  const { visibleItems, loadMoreRef } = useInfiniteScroll(filteredRecipes);
+const { visibleItems, loadMoreRef } = useInfiniteScroll(
+  filteredRecipes,
+  20
+);
 
   if (filterError || previewsQuery.isError) {
     console.error(previewsQuery.error);
@@ -43,7 +53,7 @@ const RecipePage = () => {
 
   return (
     <>
-      <HeroBanner background="/src/styling/images/bbbff.jpg">
+      <HeroBanner background={recipepageimg}>
         <h1>Find recipes worth returning to</h1>
       </HeroBanner>
 
@@ -51,9 +61,11 @@ const RecipePage = () => {
         <Loader />
       ) : (
         <>
-          <div className="control-section">
-            <SearchBar onSearch={setSearchQuery} />
+          <SearchBar onSearch={setSearchQuery} />
 
+
+
+          <div className="control-section">
             <FilterSearch
               categories={categories}
               areas={areas}
@@ -68,7 +80,22 @@ const RecipePage = () => {
             />
           </div>
 
-          <div className="recipe-page">
+          {hasActiveFilters && (
+            <Button
+            variant="danger"
+              className="clear-filter-btn"
+              aria-label="Clear search and filters"
+              title="Clear search and filters"
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedCategory("");
+                setSelectedArea("");
+              }}
+            >
+              Clear Search
+            </Button>
+          )}
+          <div key={infiniteScrollKey} className="recipe-page">
             <div className="recipe-grid">
               {visibleItems.map((recipe) => (
                 <RecipeCard key={recipe.idMeal} {...recipe} />

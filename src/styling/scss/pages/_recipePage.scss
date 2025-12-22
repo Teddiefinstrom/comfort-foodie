@@ -1,5 +1,4 @@
 .control-section {
-  padding: 1.5rem 1rem ;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -38,6 +37,14 @@
       background-color: darken($color-orange, 7%);
     }
   }
+}
+
+.clear-filter-btn {
+  display: block;
+  margin: 0.8rem auto 1.4rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 999px;
 }
 
 .recipe-page {

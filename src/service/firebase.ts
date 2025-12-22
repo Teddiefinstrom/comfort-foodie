@@ -6,7 +6,6 @@ import { getFirestore, type DocumentData, collection, CollectionReference } from
 
 export interface UserProfile {
     id: string;
-    //name: string;
     email: string;
     photo: string | null;
 }

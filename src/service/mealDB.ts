@@ -45,7 +45,7 @@ export const getPreviewByIngredient = async (
   return data.meals || [];
 };
 
-// Get all recipes in cagetogires, area and ingredients at once
+// Get all recipes from categories to render on recipe page
 export const getAllPreviewRecipes = async (): Promise<RecipePreview[]> => {
   const categories = await getAllCategories();
   const allRecipesMap = new Map<string, RecipePreview>();
@@ -60,11 +60,10 @@ export const getAllPreviewRecipes = async (): Promise<RecipePreview[]> => {
       }
     });
   }
-
   return Array.from(allRecipesMap.values());
 };
 
-// Get recipies from categories so render on explore page
+// Get recipies from categories
 export const getAllCategories = async (): Promise<string[]> => {
   const res = await fetch(`${BASE_URL}/list.php?c=list`);
   if (!res.ok) throw new Error("Failed to fetch category list");
@@ -122,16 +121,7 @@ export const getIngredientsThumb = (name: string) => {
   return `https://www.themealdb.com/images/ingredients/${safe}.png`;
 };
 
-// Ingredients Detail Info
-// export const getIngredientsDetails = async (name: string): Promise<Ingredient | null> => {
-//   const res = await fetch(`${BASE_URL}/search.php?i=${name}`);
-//   if (!res.ok) throw new Error ("Failed to fetch ingredients details");
-
-//   const data = await res.json();
-//   return data.ingredients ? data.ingredients[0] : null;
-// };
-
-// Get recipes by ingredients (detail page)
+// Get recipes by ingredients
 export const getRecipesByIngredients = async (ingredient: string): Promise<RecipePreview[]> => {
   const res = await fetch(`${BASE_URL}/filter.php?i=${ingredient}`);
   if (!res.ok) {

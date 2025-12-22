@@ -1,0 +1,63 @@
+.add-to-collage-modal {
+  .modal-header {
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    border: none;
+
+    .btn-close {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .modal-title {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    color: $color-text-primary;
+  }
+
+  .modal-body {
+    text-align: center;
+
+    p {
+      color: $color-text-secondary;
+    }
+  }
+
+  .list-group {
+    margin-top: 1rem;
+  }
+
+  .list-group-item {
+    border-radius: 8px;
+    border: 1px solid $color-icon;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    color: $color-text-primary;
+
+    &:hover {
+      background-color: $color-bg-2;
+    }
+  }
+
+  .modal-footer {
+    justify-content: center;
+    padding-left: 0;
+    gap: 0.8rem;
+  }
+
+  .btn-warning {
+    background-color: $color-orange;
+    border: none;
+
+    &:hover {
+      background-color: $color-orange-hover;
+    }
+  }
+
+  .btn-secondary {
+    border: none;
+  }
+}

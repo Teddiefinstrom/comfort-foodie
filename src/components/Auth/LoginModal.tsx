@@ -43,7 +43,7 @@ const LoginModal = ({ show, onClose, switchToRegister }: LoginModalProps) => {
       toast.success("Login Successfully! 🎉");
       onClose();
       navigate("/profile");
-    } catch (error) {
+    } catch {
       console.error("Login failed. Check your credentials.");
       toast.error("Incorrect email or password, access denied");
     } finally {
@@ -63,7 +63,7 @@ const LoginModal = ({ show, onClose, switchToRegister }: LoginModalProps) => {
       toast.success(
         "Password reset, check your inbox for instructions to reset your password."
       );
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong, please try again later");
     }
   };

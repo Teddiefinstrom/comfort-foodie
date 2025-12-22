@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import useAuth from "../hooks/useAuth";
-import type { Collage, RecipeLikeData } from "../types/recipe";
-import { addRecipeToCollage, getCollages } from "../service/collages.service";
+import useAuth from "../../hooks/useAuth";
+import type { Collage, RecipeLikeData } from "../../types/recipe";
+import {
+  addRecipeToCollage,
+  getCollages,
+} from "../../service/collages.service";
 import toast from "react-hot-toast";
 import Modal from "react-bootstrap/esm/Modal";
 import Button from "react-bootstrap/esm/Button";
 import ListGroup from "react-bootstrap/esm/ListGroup";
-import CreateCollageModal from "./CreateCollageModal";
+import CreateCollageModal from "../CreateCollageModal";
 
 interface AddToCollageProps {
   show: boolean;
@@ -20,35 +23,37 @@ const AddToCollageModal = ({ show, onClose, recipe }: AddToCollageProps) => {
   const [loading, setLoading] = useState(true);
   const [showCreateModal, setShowCreateModal] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     if (!currentUser || !show) return;
 
     const loadCollages = async () => {
-        setLoading(true);
-        const data = await getCollages(currentUser.uid);
-        setCollages(data);
-        setLoading(false);
+      setLoading(true);
+      const data = await getCollages(currentUser.uid);
+      setCollages(data);
+      setLoading(false);
     };
     loadCollages();
-}, [currentUser, show]);
+  }, [currentUser, show]);
 
-const handleAdd = async (collageId: string) => {
-    if(!currentUser || !recipe) return;
+  const handleAdd = async (collageId: string) => {
+    if (!currentUser || !recipe) return;
 
     await addRecipeToCollage(currentUser.uid, collageId, recipe);
-    toast.success(`Added to "${collages.find(c => c.id === collageId)?.title}"`);
+    toast.success(
+      `Added to "${collages.find((c) => c.id === collageId)?.title}"`
+    );
     onClose();
-};
+  };
 
-return (
+  return (
     <>
-    <Modal show={show} onHide={onClose} centered>
+      <Modal show={show} onHide={onClose} centered className="auth-modal add-to-collage-modal">
         <Modal.Header closeButton>
           <Modal.Title>Add to collage</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-        {loading ? (
+          {loading ? (
             <p>Loading collages...</p>
           ) : collages.length === 0 ? (
             <p>You have no collages yet.</p>
@@ -79,17 +84,16 @@ return (
       </Modal>
 
       <CreateCollageModal
-      show={showCreateModal}
-      onClose={() => setShowCreateModal(false)}
-      onCreated={async () => {
-        if (!currentUser) return;
-        const data = await getCollages(currentUser.uid);
-        setCollages(data);
-      }}
+        show={showCreateModal}
+        onClose={() => setShowCreateModal(false)}
+        onCreated={async () => {
+          if (!currentUser) return;
+          const data = await getCollages(currentUser.uid);
+          setCollages(data);
+        }}
       />
     </>
-)
-
+  );
 };
 
 export default AddToCollageModal;

@@ -10,67 +10,57 @@
 
   .nav-link {
     color: $color-text-primary;
-    font-size: 1.05rem;
     font-weight: 500;
+    font-size: 1.05rem;
 
     &:hover {
-      color:$color-orange-hover;
+      color: $color-orange-hover;
     }
   }
 
   .nav-avatar {
     width: 42px;
     height: 42px;
-    object-fit: cover;
     border-radius: 50%;
+    object-fit: cover;
     cursor: pointer;
   }
 }
 
 .nav-btns {
-  display: flex;
   gap: 0.6rem;
+
+  .btn {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
 }
 
-.nav-btns .btn {
-  padding: 0.35rem 0.8rem;
-  font-size: 0.85rem;
-  line-height: 1.2;
-}
-
-@include tablet {
+@media (max-width: $breakpoint-laptop) {
   .navbar {
     .navbar-brand {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
     }
 
     .nav-link {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
     }
   }
-}
-
-@media (max-width: 991px) {
+  .nav-btns,
   .nav-profile-dropdown {
-    margin-top: 0.8rem; 
-  }
-
-  .nav-btns {
-    margin-top: 0.8rem; 
+    margin-top: 0.8rem;
   }
 }
-
 
 @include laptop {
   .navbar {
-    padding: 1rem 1.2rem;
-
     .navbar-brand {
-      font-size: 2rem;
+      font-size: 1.9rem;
     }
 
     .nav-link {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
     }
   }
 

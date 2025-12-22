@@ -32,11 +32,9 @@ const EditProfilePage = () => {
   const {
     register,
     handleSubmit,
-    //formState: { errors },
   } = useForm<EditProfileForm>({
     defaultValues: {
       displayName: currentUser?.displayName || username,
-      //email: currentUser?.email || "",
       password: "",
     },
   });
@@ -139,14 +137,6 @@ const EditProfilePage = () => {
             alt="Profile"
             className="profile-avatar"
           />
-
-          {/** 
-          <Button variant="secondary" 
-          className="btn-upload"
-          >
-            Change Profile Picture
-          </Button>  
-          */}
         </div>
 
         <Form onSubmit={handleSubmit(onSubmit)}>
@@ -164,7 +154,6 @@ const EditProfilePage = () => {
             <Form.Control
               type="text"
               placeholder="Your name"
-              //defaultValue={currentUser?.displayName || username}
               {...register("displayName")}
             />
           </Form.Group>

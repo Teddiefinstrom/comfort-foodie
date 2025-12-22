@@ -14,6 +14,7 @@ const ProfilePage = () => {
       </h1>
       <ProfileCard />
       </div>
+
     </>
   );
 };

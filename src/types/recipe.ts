@@ -15,7 +15,7 @@ export interface RecipePreview {
     strArea: string;
     strInstructions: string;
   
-    [key: string]: any; 
+    [key: string]: string | null; 
   }
   
   export interface Category {
@@ -35,7 +35,6 @@ export interface RecipePreview {
   }
 
   export interface SavedRecipe {
-
     idMeal: string;
     title: string;
     image: string;
@@ -48,7 +47,6 @@ export interface RecipePreview {
     image: string;
 }
 
-// Collage Type
 export interface Collage {
     id: string;
     title: string;

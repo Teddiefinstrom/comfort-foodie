@@ -1,19 +1,26 @@
+import HeroBanner from "../components/HeroBanner";
+import aboutimg from "../styling/images/aboutimg.jpg";
 
 const AboutPage = () => {
   return (
     <>
-      <div className="about-page">
+      <HeroBanner background={aboutimg}>
         <h1>About Comfort Foodie</h1>
+      </HeroBanner>
+      <div className="about-page">
         <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+          Comfort Foodie is a recipe platform created to inspire joy, curiosity,
+          and a relaxed relationship with food. It’s a place for people who love
+          cooking, discovering new flavors, and exploring food from different
+          cultures – without pressure, rules, or diet-focused thinking.
         </p>
-
+        <p>
+          Instead of focusing on calories or restrictions, Comfort Foodie
+          encourages users to cook for pleasure, creativity, and comfort.
+          Whether you’re looking for a familiar favorite or something completely
+          new, the goal is to make food exploration feel warm, accessible, and
+          enjoyable.
+        </p>
       </div>
     </>
   );

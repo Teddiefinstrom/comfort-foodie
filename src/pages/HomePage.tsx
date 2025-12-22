@@ -3,6 +3,7 @@ import Loader from "../components/ErrorHandling/Loader";
 import HeroBanner from "../components/HeroBanner";
 import useHomeCategories from "../hooks/useHomeCategories";
 import toast from "react-hot-toast";
+import homeimg from "../styling/images/homeimg.jpg";
 
 const HomePage = () => {
   const { data, isLoading, isError, error } = useHomeCategories([
@@ -25,15 +26,15 @@ const HomePage = () => {
 
   return (
     <>
-      <HeroBanner background="/src/styling/images/loveiiii.jpg">
-      <h1>Food that feels like home</h1>
+      <HeroBanner background={homeimg}>
+        <h1>Food that feels like home</h1>
       </HeroBanner>
       <div className="intro-text-section">
-      <p className="intro-text">
+        <p className="intro-text">
           A gentle, virtual cookbook made for anyone who wants to create
           something good, nourishing, and calming.
         </p>
-        </div>
+      </div>
 
       {isLoading ? (
         <Loader />
