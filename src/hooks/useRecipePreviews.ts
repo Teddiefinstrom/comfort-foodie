@@ -4,6 +4,7 @@ import {
   getPreviewByArea,
   getPreviewByCategory,
 } from "../service/mealDB";
+import type { RecipePreview } from "../types/recipe";
 
 const SHUFFLE_TIME = 1000 * 60 * 60 * 12;
 const SHUFFLE_KEY = "explore_recipes_shuffle";
@@ -21,7 +22,7 @@ const useRecipePreviews = (
   category: string,
   area: string,
 ) => {
-    return useQuery({
+    return useQuery<RecipePreview[]>({
         queryKey: ["previews", category, area],
         queryFn: async () => {
             if (category) return getPreviewByCategory(category);
@@ -30,7 +31,7 @@ const useRecipePreviews = (
           },
           select: (data) => {
             if (category || area) {
-              
+
               return data;
             }
       

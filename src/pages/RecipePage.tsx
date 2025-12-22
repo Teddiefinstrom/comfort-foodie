@@ -8,7 +8,6 @@ import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import toast from "react-hot-toast";
 import Loader from "../components/ErrorHandling/Loader";
 import HeroBanner from "../components/HeroBanner";
-import type { RecipePreview } from "../types/recipe";
 import recipepageimg from "../styling/images/recipepage.jpg";
 import Button from "react-bootstrap/esm/Button";
 
@@ -27,17 +26,24 @@ const RecipePage = () => {
 
   const previewsQuery = useRecipePreviews(selectedCategory, selectedArea);
 
-  const previews: RecipePreview[] = previewsQuery.data || [];
 
   const filteredRecipes = useMemo(() => {
+    const list = previewsQuery.data ?? [];
+  
     return searchQuery.trim()
-      ? previews.filter((recipe) =>
-          recipe.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
+      ? list.filter((recipe) =>
+      recipe.strMeal.toLowerCase().includes(searchQuery.toLowerCase())
         )
-      : previews;
-  }, [previews, searchQuery]);
+      : list;
+  }, [previewsQuery.data, searchQuery]);
+  
+  const infiniteScrollKey =
+  `${searchQuery}-${selectedCategory}-${selectedArea}`;
 
-  const { visibleItems, loadMoreRef } = useInfiniteScroll(filteredRecipes);
+const { visibleItems, loadMoreRef } = useInfiniteScroll(
+  filteredRecipes,
+  20
+);
 
   if (filterError || previewsQuery.isError) {
     console.error(previewsQuery.error);
@@ -89,7 +95,7 @@ const RecipePage = () => {
               Clear Search
             </Button>
           )}
-          <div className="recipe-page">
+          <div key={infiniteScrollKey} className="recipe-page">
             <div className="recipe-grid">
               {visibleItems.map((recipe) => (
                 <RecipeCard key={recipe.idMeal} {...recipe} />

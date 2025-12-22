@@ -15,7 +15,7 @@ export interface RecipePreview {
     strArea: string;
     strInstructions: string;
   
-    [key: string]: any; 
+    [key: string]: string | null; 
   }
   
   export interface Category {

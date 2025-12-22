@@ -15,7 +15,7 @@ const AuthModalSwitch = ({ activeModal, setActiveModal }: AuthModalProps) => {
     if (location.state?.openLogin) {
       setActiveModal("login");
     }
-  }, [location.state]);
+  }, [location.state, setActiveModal]);
 
   return (
     <>
